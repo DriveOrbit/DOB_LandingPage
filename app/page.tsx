@@ -27,62 +27,39 @@ import {
 const features = [
   {
     icon: <Car className="h-12 w-12" />,
-    title: "REAL-TIME TRACKING",
-    description: "Keep your finger on the pulse of your fleet with our advanced GPS tracking system. Monitor vehicle locations, speed, and status updates in real-time, ensuring optimal route management and improved response times.",
+    title: "REAL TIME VEHICLE TRACKING",
+    description: "Real-time route tracking provides enhanced oversight and control over vehicle operations. Administrators can monitor each vehicle's exact location on a map interface, ensuring vehicles stay on their intended route and reducing unauthorized deviations. The system also logs route history, capturing details like stops, travel time, and any deviations, which can be used for audits and route optimization.",
     image: "https://t3.ftcdn.net/jpg/09/86/01/52/240_F_986015247_k85qqT9bRgLgJ356YJWpXXPPuLm4QB9o.jpg",
   },
   {
     icon: <BarChart3 className="h-12 w-12" />,
-    title: "PERFORMANCE ANALYTICS",
-    description: "Transform raw data into actionable insights with our comprehensive analytics platform. Track driver behavior, fuel efficiency, and maintenance patterns to optimize your fleet's performance and reduce operational costs.",
+    title: "DRIVER PERFORMANCE    ",
+    description: "Driver performance tracking involves monitoring and analyzing various aspects of a driver's behavior to ensure safety, efficiency, and adherence to company standards. Key metrics such as speeding, harsh braking, rapid acceleration, and idle time are closely tracked to evaluate driving habits. This comprehensive approach helps companies improve safety, recognize top drivers, and optimize fleet performance.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
   },
   {
     icon: <QrCode className="h-12 w-12" />,
     title: "SMART VEHICLE ACCESS",
     description: "Streamline vehicle assignments and access control with our innovative QR code system. Enable secure and contactless vehicle check-in/check-out, while maintaining a detailed digital record of vehicle usage.",
-    image: "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?w=800",
+    image: "https://t3.ftcdn.net/jpg/04/41/09/04/240_F_441090449_LGnk86BswcQwVeuNMafN1HEqAV7A36Kl.jpg",
   },
   {
     icon: <Bell className="h-12 w-12" />,
-    title: "PREDICTIVE MAINTENANCE",
-    description: "Stay ahead of vehicle maintenance with our AI-powered predictive system. Receive timely alerts for scheduled services, potential issues, and required inspections to prevent costly breakdowns and extend vehicle life.",
+    title: "MAINTENANCE ALTERTS   ",
+    description: "Maintenance alerts help manage vehicle upkeep by sending automatic reminders for service schedules, maintenance checks, or when a vehicle’s performance drops. These alerts are triggered based on factors like engine performance, and the time since the last service, helping ensure that routine maintenance is not overlooked. By receiving these reminders, fleet managers can schedule repairs or maintenance when they are needed.",
     image: "https://t4.ftcdn.net/jpg/09/15/24/87/240_F_915248739_vBh9NzvgNZkcMPB4mGj6BjsLr2w12B9Z.jpg",
   },
   {
     icon: <Fuel className="h-12 w-12" />,
     title: "FUEL OPTIMIZATION",
     description: "Maximize fuel efficiency across your entire fleet with our intelligent monitoring system. Track consumption patterns, identify inefficiencies, and implement data-driven strategies to reduce fuel costs.",
-    image: "https://images.unsplash.com/photo-1579621970590-9d624e59d834?w=800",
+    image: "https://t4.ftcdn.net/jpg/11/74/64/43/240_F_1174644354_pByY99JZRngTUe0OOaLeg7XBJuPpWj8O.jpg",
   },
   {
     icon: <Activity className="h-12 w-12" />,
-    title: "SAFETY MANAGEMENT",
-    description: "Enhance fleet safety with our comprehensive monitoring tools. Track driver behavior, manage risk factors, and ensure compliance with safety regulations to protect your assets and team members.",
-    image: "https://images.unsplash.com/photo-1454117096348-e4abbeba002c?w=800",
-  },
-];
-
-const steps = [
-  {
-    icon: <UserPlus className="h-6 w-6" />,
-    title: "Register & Setup",
-    description: "Add your drivers and vehicles to the system in minutes.",
-  },
-  {
-    icon: <QrCode className="h-6 w-6" />,
-    title: "Scan & Connect",
-    description: "Drivers scan vehicle QR codes to start their shifts.",
-  },
-  {
-    icon: <Gauge className="h-6 w-6" />,
-    title: "Track & Monitor",
-    description: "Get real-time updates on vehicle location and driver activity.",
-  },
-  {
-    icon: <BarChart3 className="h-6 w-6" />,
-    title: "Optimize & Improve",
-    description: "Use insights to enhance fleet performance and efficiency.",
+    title: "PERFORMANCE ANALYTICS",
+    description: "Performance analytics provide detailed reports on key metrics like fuel use, vehicle performance, and driver behavior. These insights help fleet managers identify inefficiencies, optimize operations, and reduce costs for improved productivity.",
+    image: "https://t4.ftcdn.net/jpg/05/82/71/17/240_F_582711786_QIZaSfrv2nKTzej348R8HxbX3GB2vJjl.jpg",
   },
 ];
 
@@ -99,7 +76,7 @@ const teamMembers = [
     },
   },
   {
-    name: "Sacchitha Sithuruwan",
+    name: "Sachitha Sithuruwan",
     role: "Full-Stack Developer",
     image: "https://avatars.githubusercontent.com/u/160252042?v=4",
     bio: "Leading our technical innovation with 15+ years of experience in fleet management systems.",
@@ -188,81 +165,127 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navbar */}
-      <motion.nav
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showNavbar ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        className={`fixed top-0 left-0 right-0 z-50 ${navbarBackground ? "bg-white" : ""}`}
+<motion.nav
+  initial={{ opacity: 0 }}
+  animate={{ opacity: showNavbar ? 1 : 0 }}
+  transition={{ duration: 0.3 }}
+  className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+    navbarBackground 
+      ? "bg-black text-white shadow-md"  // When scrolled
+      : "bg-white text-gray-800"         // When at top
+  }`}
+>
+  <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    {/* Logo */}
+    <div className="flex items-center space-x-2">
+      <img
+        src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
+        alt="DriveOrbit Logo"
+        className="h-10"
+      />
+      <span className={`text-xl font-bold ${
+        navbarBackground ? "text-white" : "text-gray-800"
+      }`}>
+        DriveOrbit
+      </span>
+    </div>
+
+    {/* Desktop Menu */}
+    <div className="hidden md:flex space-x-8 text-sm font-medium items-center">
+      <a 
+        href="#about" 
+        className={`hover:text-primary transition-colors ${
+          navbarBackground ? "text-white" : "text-gray-800"
+        }`}
       >
-        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <img 
-            src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4" 
-            alt="DriveOrbit Logo" 
-            className="h-10" 
-            onError={(e) => { 
-              (e.target as HTMLImageElement).src = '/fallback-logo.png'; 
-              console.error('Image not found:', e); 
-            }} 
-          />
-          <div className="hidden md:flex space-x-8 text-sm font-medium">
-            <a href="#about" className="hover:text-[#df8f08]">About</a>
-            <a href="#services" className="hover:text-[#df8f08]">Services</a>
-            <a href="#join" className="hover:text-[#df8f08] bg-black text-white p-2 rounded-lg">Join Us</a>
-          </div>
-          <div className="md:hidden">
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-        <div
-          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-            } md:hidden`}
-        >
-          <div className="flex justify-end p-4">
-            <button onClick={() => setIsMobileMenuOpen(false)}>
-              <X className="h-6 w-6" />
-            </button>
-          </div>
-          <ul className="flex flex-col space-y-4 p-4">
-            <li><a href="#services" className="hover:underline">Services</a></li>
-            <li><a href="#about" className="hover:underline">About</a></li>
-            <li><a href="#join" className="hover:underline">Join Us</a></li>
-          </ul>
-        </div>
-      </motion.nav>
+        About
+      </a>
+      <a 
+        href="#features" 
+        className={`hover:text-primary transition-colors ${
+          navbarBackground ? "text-white" : "text-gray-800"
+        }`}
+      >
+        Features
+      </a>
+      <a 
+        href="#team" 
+        className={`hover:text-primary transition-colors ${
+          navbarBackground ? "text-white" : "text-gray-800"
+        }`}
+      >
+        Team
+      </a>
+      <a
+        href="#join"
+        className={`px-4 py-2 rounded-lg transition-colors ${
+          navbarBackground 
+            ? "bg-white text-black hover:bg-gray-100" 
+            : "bg-black text-white hover:bg-gray-800"
+        }`}
+      >
+        Join Us
+      </a>
+    </div>
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920"
-            alt="Fleet Dashboard"
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background" />
-        </div>
+    {/* Mobile Menu Toggle */}
+    <div className="md:hidden">
+      <button
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className={`hover:text-primary focus:outline-none ${
+          navbarBackground ? "text-white" : "text-gray-800"
+        }`}
+      >
+        {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+      </button>
+    </div>
+  </div>
 
-        <div className="container mx-auto px-4 z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              DriveOrbit – Smarter Fleet Management for a Safer Future
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Transform your fleet operations with real-time tracking, intelligent monitoring, and data-driven insights.
-            </p>
-            <Button size="lg" className="text-lg px-8 py-6">
-              Request a Demo <ChevronRight className="ml-2" />
-            </Button>
-          </motion.div>
-        </div>
-      </section>
+  {/* Mobile Menu (keep existing styles) */}
+  <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ${
+    isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+  } md:hidden`}>
+    {/* Keep existing mobile menu content */}
+  </div>
+</motion.nav>
+     {/* Hero Section */}
+<section className="relative h-screen flex items-center justify-center overflow-hidden">
+  {/* Video Background */}
+  <video
+    autoPlay
+    muted
+    loop
+    className="absolute inset-0 w-full h-full object-cover z-0"
+  >
+    <source
+      src="https://cdn.pixabay.com/video/2018/11/29/19627-304735769_tiny.mp4"
+      type="video/webm"
+    />
+    Your browser does not support the video tag.
+  </video>
 
+  {/* Overlay to darken the video background */}
+  <div className="absolute inset-0 bg-black/50 z-0"></div>
+
+  <div className="container mx-auto px-4 z-10">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2 }}
+      className="text-center"
+    >
+      <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+        DriveOrbit – Smarter Fleet Management for a Safer Future
+      </h1>
+      <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
+        Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
+      </p>
+      <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white">
+        Request a Demo <ChevronRight className="ml-2" />
+      </Button>
+    </motion.div>
+  </div>
+</section>
       {/* Features Section */}
       <section className="py-24 bg-muted/50">
         <div className="container mx-auto px-4">
@@ -309,45 +332,7 @@ export default function Home() {
                   <p className="text-lg text-muted-foreground">
                     {feature.description}
                   </p>
-                  <Button variant="outline" className="group">
-                    Read More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get started with DriveOrbit in four simple steps
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="mb-4 text-primary flex justify-center">{step.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
               </motion.div>
             ))}
           </div>
