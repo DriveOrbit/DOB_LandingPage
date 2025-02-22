@@ -1,5 +1,6 @@
- "use client";
+"use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -18,6 +19,8 @@ import {
   Twitter,
   Linkedin,
   ArrowRight,
+  Menu,
+  X,
 } from "lucide-react";
 
 const features = [
@@ -87,14 +90,14 @@ const testimonials = [
     name: "Sarah Chen",
     role: "Fleet Manager",
     company: "LogiTech Solutions",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
+    image: "https://avatars.githubusercontent.com/u/188667694?v=4",
     quote: "DriveOrbit has transformed how we manage our fleet. The real-time tracking and analytics have improved our efficiency by 40%.",
   },
   {
     name: "Michael Rodriguez",
     role: "Operations Director",
     company: "FastTrack Delivery",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+    image: "https://avatars.githubusercontent.com/u/160252042?v=4",
     quote: "The QR code system and maintenance alerts have significantly reduced our vehicle downtime. Excellent platform!",
   },
   {
@@ -107,8 +110,74 @@ const testimonials = [
 ];
 
 export default function Home() {
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [navbarBackground, setNavbarBackground] = useState(false);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
+      }
+      lastScrollY = window.scrollY;
+
+      if (window.scrollY > 50) {
+        setNavbarBackground(true);
+      } else {
+        setNavbarBackground(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
+      {/* Navbar */}
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showNavbar ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`fixed top-0 left-0 right-0 z-50 ${navbarBackground ? "bg-white" : ""}`}
+      >
+        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
+          <img src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4" alt="DriveOrbit Logo" className="h-10" onError={(e) => { e.target.src = '/fallback-logo.png'; console.error('Image not found:', e) }} />
+          <div className="hidden md:flex space-x-8 text-sm font-medium">
+            <a href="#about" className="hover:text-[#df8f08]">About</a>
+            <a href="#services" className="hover:text-[#df8f08]">Services</a>
+            <a href="#join" className="hover:text-[#df8f08] bg-black text-white p-2 rounded-lg">Join Us</a>
+          </div>
+          <div className="md:hidden">
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+        <div
+          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+            } md:hidden`}
+        >
+          <div className="flex justify-end p-4">
+            <button onClick={() => setIsMobileMenuOpen(false)}>
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+          <ul className="flex flex-col space-y-4 p-4">
+            <li><a href="#services" className="hover:underline">Services</a></li>
+            <li><a href="#about" className="hover:underline">About</a></li>
+            <li><a href="#join" className="hover:underline">Join Us</a></li>
+          </ul>
+        </div>
+      </motion.nav>
+
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -119,7 +188,7 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background" />
         </div>
-        
+
         <div className="container mx-auto px-4 z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
