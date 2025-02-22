@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -19,38 +20,46 @@ import {
   Linkedin,
   ArrowRight,
   Instagram,
+  Menu,
+  X,
 } from "lucide-react";
 
 const features = [
   {
-    icon: <Car className="h-6 w-6" />,
-    title: "Real-time Vehicle Tracking",
-    description: "Monitor your entire fleet's location and status in real-time with precision GPS tracking.",
+    icon: <Car className="h-12 w-12" />,
+    title: "REAL-TIME TRACKING",
+    description: "Keep your finger on the pulse of your fleet with our advanced GPS tracking system. Monitor vehicle locations, speed, and status updates in real-time, ensuring optimal route management and improved response times.",
+    image: "https://t3.ftcdn.net/jpg/09/86/01/52/240_F_986015247_k85qqT9bRgLgJ356YJWpXXPPuLm4QB9o.jpg",
   },
   {
-    icon: <BarChart3 className="h-6 w-6" />,
-    title: "Driver Performance",
-    description: "Track and analyze driver behavior, safety scores, and route efficiency.",
+    icon: <BarChart3 className="h-12 w-12" />,
+    title: "PERFORMANCE ANALYTICS",
+    description: "Transform raw data into actionable insights with our comprehensive analytics platform. Track driver behavior, fuel efficiency, and maintenance patterns to optimize your fleet's performance and reduce operational costs.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
   },
   {
-    icon: <QrCode className="h-6 w-6" />,
-    title: "QR Code Vehicle Scanning",
-    description: "Seamlessly assign vehicles to drivers with our quick QR code system.",
+    icon: <QrCode className="h-12 w-12" />,
+    title: "SMART VEHICLE ACCESS",
+    description: "Streamline vehicle assignments and access control with our innovative QR code system. Enable secure and contactless vehicle check-in/check-out, while maintaining a detailed digital record of vehicle usage.",
+    image: "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?w=800",
   },
   {
-    icon: <Bell className="h-6 w-6" />,
-    title: "Maintenance Alerts",
-    description: "Receive automated alerts for vehicle maintenance and service schedules.",
+    icon: <Bell className="h-12 w-12" />,
+    title: "PREDICTIVE MAINTENANCE",
+    description: "Stay ahead of vehicle maintenance with our AI-powered predictive system. Receive timely alerts for scheduled services, potential issues, and required inspections to prevent costly breakdowns and extend vehicle life.",
+    image: "https://t4.ftcdn.net/jpg/09/15/24/87/240_F_915248739_vBh9NzvgNZkcMPB4mGj6BjsLr2w12B9Z.jpg",
   },
   {
-    icon: <Fuel className="h-6 w-6" />,
-    title: "Fuel Efficiency",
-    description: "Optimize fuel consumption with advanced analytics and insights.",
+    icon: <Fuel className="h-12 w-12" />,
+    title: "FUEL OPTIMIZATION",
+    description: "Maximize fuel efficiency across your entire fleet with our intelligent monitoring system. Track consumption patterns, identify inefficiencies, and implement data-driven strategies to reduce fuel costs.",
+    image: "https://images.unsplash.com/photo-1579621970590-9d624e59d834?w=800",
   },
   {
-    icon: <Activity className="h-6 w-6" />,
-    title: "Performance Analytics",
-    description: "Comprehensive reports and analytics for data-driven fleet management.",
+    icon: <Activity className="h-12 w-12" />,
+    title: "SAFETY MANAGEMENT",
+    description: "Enhance fleet safety with our comprehensive monitoring tools. Track driver behavior, manage risk factors, and ensure compliance with safety regulations to protect your assets and team members.",
+    image: "https://images.unsplash.com/photo-1454117096348-e4abbeba002c?w=800",
   },
 ];
 
@@ -147,8 +156,82 @@ const teamMembers = [
 ];
 
 export default function Home() {
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [navbarBackground, setNavbarBackground] = useState(false);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
+      }
+      lastScrollY = window.scrollY;
+
+      if (window.scrollY > 50) {
+        setNavbarBackground(true);
+      } else {
+        setNavbarBackground(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
+      {/* Navbar */}
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showNavbar ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`fixed top-0 left-0 right-0 z-50 ${navbarBackground ? "bg-white" : ""}`}
+      >
+        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
+          <img 
+            src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4" 
+            alt="DriveOrbit Logo" 
+            className="h-10" 
+            onError={(e) => { 
+              (e.target as HTMLImageElement).src = '/fallback-logo.png'; 
+              console.error('Image not found:', e); 
+            }} 
+          />
+          <div className="hidden md:flex space-x-8 text-sm font-medium">
+            <a href="#about" className="hover:text-[#df8f08]">About</a>
+            <a href="#services" className="hover:text-[#df8f08]">Services</a>
+            <a href="#join" className="hover:text-[#df8f08] bg-black text-white p-2 rounded-lg">Join Us</a>
+          </div>
+          <div className="md:hidden">
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+        <div
+          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+            } md:hidden`}
+        >
+          <div className="flex justify-end p-4">
+            <button onClick={() => setIsMobileMenuOpen(false)}>
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+          <ul className="flex flex-col space-y-4 p-4">
+            <li><a href="#services" className="hover:underline">Services</a></li>
+            <li><a href="#about" className="hover:underline">About</a></li>
+            <li><a href="#join" className="hover:underline">Join Us</a></li>
+          </ul>
+        </div>
+      </motion.nav>
+
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -196,7 +279,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="space-y-24">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -204,12 +287,32 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}
               >
-                <Card className="p-6 h-full hover:shadow-lg transition-shadow">
-                  <div className="mb-4 text-primary">{feature.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </Card>
+                <div className="w-full lg:w-1/2">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-3xl" />
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-[400px] object-cover rounded-3xl"
+                    />
+                  </div>
+                </div>
+                <div className="w-full lg:w-1/2 space-y-6">
+                  <div className="inline-block p-3 bg-primary/10 rounded-2xl text-primary">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
+                    {feature.title}
+                  </h3>
+                  <p className="text-lg text-muted-foreground">
+                    {feature.description}
+                  </p>
+                  <Button variant="outline" className="group">
+                    Read More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </div>
               </motion.div>
             ))}
           </div>
