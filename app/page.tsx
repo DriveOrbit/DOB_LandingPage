@@ -22,6 +22,7 @@ import {
   Instagram,
   Menu,
   X,
+  Facebook,
 } from "lucide-react";
 
 const features = [
@@ -33,7 +34,7 @@ const features = [
   },
   {
     icon: <BarChart3 className="h-12 w-12" />,
-    title: "DRIVER PERFORMANCE    ",
+    title: "DRIVER PERFORMANCE",
     description: "Driver performance tracking involves monitoring and analyzing various aspects of a driver's behavior to ensure safety, efficiency, and adherence to company standards. Key metrics such as speeding, harsh braking, rapid acceleration, and idle time are closely tracked to evaluate driving habits. This comprehensive approach helps companies improve safety, recognize top drivers, and optimize fleet performance.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
   },
@@ -45,7 +46,7 @@ const features = [
   },
   {
     icon: <Bell className="h-12 w-12" />,
-    title: "MAINTENANCE ALTERTS   ",
+    title: "MAINTENANCE ALERTS",
     description: "Maintenance alerts help manage vehicle upkeep by sending automatic reminders for service schedules, maintenance checks, or when a vehicle’s performance drops. These alerts are triggered based on factors like engine performance, and the time since the last service, helping ensure that routine maintenance is not overlooked. By receiving these reminders, fleet managers can schedule repairs or maintenance when they are needed.",
     image: "https://t4.ftcdn.net/jpg/09/15/24/87/240_F_915248739_vBh9NzvgNZkcMPB4mGj6BjsLr2w12B9Z.jpg",
   },
@@ -165,127 +166,139 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navbar */}
-<motion.nav
-  initial={{ opacity: 0 }}
-  animate={{ opacity: showNavbar ? 1 : 0 }}
-  transition={{ duration: 0.3 }}
-  className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-    navbarBackground 
-      ? "bg-black text-white shadow-md"  // When scrolled
-      : "bg-white text-gray-800"         // When at top
-  }`}
->
-  <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-    {/* Logo */}
-    <div className="flex items-center space-x-2">
-      <img
-        src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
-        alt="DriveOrbit Logo"
-        className="h-10"
-      />
-      <span className={`text-xl font-bold ${
-        navbarBackground ? "text-white" : "text-gray-800"
-      }`}>
-        DriveOrbit
-      </span>
-    </div>
-
-    {/* Desktop Menu */}
-    <div className="hidden md:flex space-x-8 text-sm font-medium items-center">
-      <a 
-        href="#about" 
-        className={`hover:text-primary transition-colors ${
-          navbarBackground ? "text-white" : "text-gray-800"
-        }`}
-      >
-        About
-      </a>
-      <a 
-        href="#features" 
-        className={`hover:text-primary transition-colors ${
-          navbarBackground ? "text-white" : "text-gray-800"
-        }`}
-      >
-        Features
-      </a>
-      <a 
-        href="#team" 
-        className={`hover:text-primary transition-colors ${
-          navbarBackground ? "text-white" : "text-gray-800"
-        }`}
-      >
-        Team
-      </a>
-      <a
-        href="#join"
-        className={`px-4 py-2 rounded-lg transition-colors ${
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showNavbar ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
           navbarBackground 
-            ? "bg-white text-black hover:bg-gray-100" 
-            : "bg-black text-white hover:bg-gray-800"
+            ? "bg-black text-white shadow-md"  // When scrolled
+            : "bg-white text-gray-800"         // When at top
         }`}
       >
-        Join Us
-      </a>
-    </div>
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          {/* Logo */}
+          <div className="flex items-center space-x-2">
+            <img
+              src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
+              alt="DriveOrbit Logo"
+              className="h-10"
+            />
+            <span className={`text-xl font-bold ${
+              navbarBackground ? "text-white" : "text-gray-800"
+            }`}>
+              DriveOrbit
+            </span>
+          </div>
 
-    {/* Mobile Menu Toggle */}
-    <div className="md:hidden">
-      <button
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className={`hover:text-primary focus:outline-none ${
-          navbarBackground ? "text-white" : "text-gray-800"
-        }`}
-      >
-        {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-      </button>
-    </div>
-  </div>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex space-x-8 text-sm font-medium items-center">
+            <a 
+              href="#about" 
+              className={`hover:text-primary transition-colors ${
+                navbarBackground ? "text-white" : "text-gray-800"
+              }`}
+            >
+              About
+            </a>
+            <a 
+              href="#features" 
+              className={`hover:text-primary transition-colors ${
+                navbarBackground ? "text-white" : "text-gray-800"
+              }`}
+            >
+              Features
+            </a>
+            <a 
+              href="#team" 
+              className={`hover:text-primary transition-colors ${
+                navbarBackground ? "text-white" : "text-gray-800"
+              }`}
+            >
+              Team
+            </a>
+            <a
+              href="#join"
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                navbarBackground 
+                  ? "bg-white text-black hover:bg-gray-100" 
+                  : "bg-black text-white hover:bg-gray-800"
+              }`}
+            >
+              Join Us
+            </a>
+          </div>
 
-  {/* Mobile Menu (keep existing styles) */}
-  <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ${
-    isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-  } md:hidden`}>
-    {/* Keep existing mobile menu content */}
-  </div>
-</motion.nav>
-     {/* Hero Section */}
-<section className="relative h-screen flex items-center justify-center overflow-hidden">
-  {/* Video Background */}
-  <video
-    autoPlay
-    muted
-    loop
-    className="absolute inset-0 w-full h-full object-cover z-0"
-  >
-    <source
-      src="https://cdn.pixabay.com/video/2018/11/29/19627-304735769_tiny.mp4"
-      type="video/webm"
-    />
-    Your browser does not support the video tag.
-  </video>
+          {/* Mobile Menu Toggle */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`hover:text-primary focus:outline-none ${
+                navbarBackground ? "text-white" : "text-gray-800"
+              }`}
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
 
-  {/* Overlay to darken the video background */}
-  <div className="absolute inset-0 bg-black/50 z-0"></div>
+        {/* Mobile Menu */}
+        <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ${
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        } md:hidden`}>
+          <div className="flex justify-end p-4">
+            <button onClick={() => setIsMobileMenuOpen(false)}>
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+          <ul className="flex flex-col space-y-4 p-4">
+            <li><a href="#about" className="hover:underline">About</a></li>
+            <li><a href="#features" className="hover:underline">Features</a></li>
+            <li><a href="#team" className="hover:underline">Team</a></li>
+            <li><a href="#join" className="hover:underline">Join Us</a></li>
+          </ul>
+        </div>
+      </motion.nav>
 
-  <div className="container mx-auto px-4 z-10">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2 }}
-      className="text-center"
-    >
-      <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-        DriveOrbit – Smarter Fleet Management for a Safer Future
-      </h1>
-      <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
-        Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
-      </p>
-      <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white">
-        Request a Demo <ChevronRight className="ml-2" />
-      </Button>
-    </motion.div>
-  </div>
-</section>
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source
+            src="https://cdn.pixabay.com/video/2018/11/29/19627-304735769_tiny.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Overlay to darken the video background */}
+        <div className="absolute inset-0 bg-black/50 z-0"></div>
+
+        <div className="container mx-auto px-4 z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+              DriveOrbit – Smarter Fleet Management for a Safer Future
+            </h1>
+            <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
+              Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
+            </p>
+            <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white">
+              Request a Demo <ChevronRight className="ml-2" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-24 bg-muted/50">
         <div className="container mx-auto px-4">
@@ -367,7 +380,7 @@ export default function Home() {
                 <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 group">
                   <div className="relative mx-auto mb-6">
                     <div className="w-32 h-32 mx-auto rounded-full overflow-hidden">
-                    <img
+                      <img
                         src={member.image}
                         alt={member.name}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
@@ -378,7 +391,7 @@ export default function Home() {
                   <p className="text-sm text-primary mb-4">{member.role}</p>
                   <p className="text-muted-foreground mb-6">{member.bio}</p>
                   <div className="flex justify-center space-x-4">
-                  <a href={member.social.Instagram} className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href={member.social.Instagram} className="text-muted-foreground hover:text-primary transition-colors">
                       <Instagram className="h-5 w-5" />
                     </a>
                     <a href={member.social.linkedin} className="text-muted-foreground hover:text-primary transition-colors">
@@ -421,43 +434,88 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-muted/30">
+      <footer className="py-12 bg-gray-100">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
+            {/* Column 1: Logo and Contact Info */}
             <div>
               <h3 className="font-bold mb-4">DriveOrbit</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-gray-600">
                 Revolutionizing fleet management with smart technology and real-time insights.
               </p>
+              <div className="mt-4">
+                <p className="text-sm text-gray-600">Tel: 123-456-7890</p>
+                <p className="text-sm text-gray-600">Email: driveorbitsocial@gmail.com</p>
+                <p className="text-sm text-gray-600">Address: 123, Chandeera road, Divulapitiya.</p>
+              </div>
             </div>
+
+            {/* Column 2: Technology */}
             <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>About Us</li>
+              <h4 className="font-semibold mb-4">Technology</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>Real-Time Tracking</li>
+                <li>Performance Analytics</li>
+                <li>Smart Vehicle Access</li>
+                <li>Predictive Maintenance</li>
+                <li>Fuel Optimization</li>
+                <li>Safety Management</li>
+              </ul>
+            </div>
+
+            {/* Column 3: About */}
+            <div>
+              <h4 className="font-semibold mb-4">About</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>Our Mission</li>
+                <li>Our Team</li>
                 <li>Careers</li>
-                <li>Contact</li>
-                <li>Blog</li>
+                <li>Press</li>
               </ul>
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Documentation</li>
-                <li>Help Center</li>
-                <li>API Reference</li>
-                <li>Status</li>
-              </ul>
-            </div>
+
+            {/* Column 4: Connect */}
             <div>
               <h4 className="font-semibold mb-4">Connect</h4>
               <div className="flex space-x-4">
-                <Twitter className="h-5 w-5" />
-                <Linkedin className="h-5 w-5" />
-                <Github className="h-5 w-5" />
+                <a href="https://www.instagram.com/driveorbit.lk/" className="text-gray-600 hover:text-primary transition-colors">
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a href="https://www.linkedin.com/company/driveorbit-lk/" className="text-gray-600 hover:text-primary transition-colors">
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a href="https://github.com/DriveOrbit" className="text-gray-600 hover:text-primary transition-colors">
+                  <Github className="h-5 w-5" />
+                </a>
+                <a href="#" className="text-gray-600 hover:text-primary transition-colors">
+                  <Facebook className="h-5 w-5" />
+                </a>
               </div>
             </div>
+
+            {/* Column 5: Subscription */}
+            <div>
+              <h4 className="font-semibold mb-4">Subscribe</h4>
+              <p className="text-sm text-gray-600 mb-4">
+                Sign up to receive DriveOrbit news and updates
+              </p>
+              <form className="flex flex-col space-y-2">
+                <input type="email" placeholder="Email" className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                <label className="flex items-center space-x-2">
+                  <input type="checkbox" className="form-checkbox" />
+                  <span className="text-sm text-gray-600">
+                    Yes, subscribe me to your newsletter.
+                  </span>
+                </label>
+                <button type="submit" className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors">
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </div>
-          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+
+          {/* Bottom Footer */}
+          <div className="border-t border-gray-300 pt-8 text-center text-sm text-gray-600">
             <p>&copy; {new Date().getFullYear()} DriveOrbit. All rights reserved.</p>
           </div>
         </div>
