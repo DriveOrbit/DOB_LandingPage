@@ -4,7 +4,13 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Avatar } from "@/components/ui/avatar";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+
 import {
   Car,
   BarChart3,
@@ -75,6 +81,7 @@ const features = [
       "https://t4.ftcdn.net/jpg/05/82/71/17/240_F_582711786_QIZaSfrv2nKTzej348R8HxbX3GB2vJjl.jpg",
   },
 ];
+
 
 const teamMembers = [
   {
@@ -184,8 +191,8 @@ export default function Home() {
         animate={{ opacity: showNavbar ? 1 : 0 }}
         transition={{ duration: 0.3 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${navbarBackground
-            ? "bg-black text-white shadow-md"
-            : "bg-white text-gray-800"
+          ? "bg-black text-white shadow-md"
+          : "bg-white text-gray-800"
           }`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -230,8 +237,8 @@ export default function Home() {
             <a
               href="#join"
               className={`px-4 py-2 rounded-lg transition-colors ${navbarBackground
-                  ? "bg-white text-black hover:bg-gray-100"
-                  : "bg-black text-white hover:bg-gray-800"
+                ? "bg-white text-black hover:bg-gray-100"
+                : "bg-black text-white hover:bg-gray-800"
                 }`}
             >
               Join Us
@@ -300,7 +307,7 @@ export default function Home() {
         >
           <source
             src="https://cdn.pixabay.com/video/2018/11/29/19627-304735769_tiny.mp4"
-            type="video/mp4"
+            type="video/webm"
           />
           Your browser does not support the video tag.
         </video>
@@ -308,7 +315,10 @@ export default function Home() {
         {/* Overlay to darken the video background */}
         <div className="absolute inset-0 bg-black/50 z-0"></div>
 
-        <div className="container mx-auto px-4 z-10">
+        {/* Black Linear Overlay at the bottom */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-10"></div>
+
+        <div className="container mx-auto px-4 z-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -319,18 +329,106 @@ export default function Home() {
               DriveOrbit – Smarter Fleet Management for a Safer Future
             </h1>
             <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
-              Transform your fleet operations with real-time tracking, smart
-              monitoring, and data-driven insights.
+              Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
             </p>
-            <Button
-              size="lg"
-              className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
-            >
+            <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white">
               Request a Demo <ChevronRight className="ml-2" />
             </Button>
           </motion.div>
         </div>
       </section>
+
+      {/* About Section */}
+      <section className="relative h-screen flex items-center justify-center bg-black">
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 to-black/70 z-0"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-center lg:text-left"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+                About DriveOrbit
+              </h2>
+              <p className="text-lg md:text-xl text-gray-300 mb-8">
+                DriveOrbit is a smart fleet management solution designed to optimize vehicle usage, enhance security, and improve operational efficiency. Our platform empowers businesses with real-time tracking, driver monitoring, and automated insights to reduce misuse and maximize productivity. By leveraging cutting-edge technology, DriveOrbit ensures seamless fleet operations, helping organizations manage their vehicles smarter and safer.
+              </p>
+              <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white">
+                Learn More <ChevronRight className="ml-2" />
+              </Button>
+            </motion.div>
+
+            {/* Slider for App Mockups */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="w-full max-w-lg mx-auto lg:max-w-none"
+            >
+              <Swiper
+                spaceBetween={30}
+                centeredSlides={true}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }}
+                pagination={{
+                  clickable: true,
+                }}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+              >
+                {/* Add your app mockup images here */}
+                <SwiperSlide>
+                  <motion.img
+                    src="https://private-user-images.githubusercontent.com/151379703/412724616-b797570f-3e84-4109-8afd-09a74e8fdff4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAzMjI4NjksIm5iZiI6MTc0MDMyMjU2OSwicGF0aCI6Ii8xNTEzNzk3MDMvNDEyNzI0NjE2LWI3OTc1NzBmLTNlODQtNDEwOS04YWZkLTA5YTc0ZThmZGZmNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMjIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDIyM1QxNDU2MDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jNmJjZTRhYzNhZTcyYzY1MTE3YmE3MWYzMGNmZjFmOGNjZDJmNjhmNjAzNGUxZjVjOTdmZGExYzRkZmMwNmI1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.6R72p4Ps1IeIm0QIoFi0kntJX_MVwkOiDUEw_NU0tIM"
+                    alt="App Mockup 1"
+                    className="w-60 h-50 object-cover rounded-lg shadow-xl border-2 border-gray-700 mx-auto"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <motion.img
+                    src="https://private-user-images.githubusercontent.com/151379703/412724616-b797570f-3e84-4109-8afd-09a74e8fdff4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAzMjI4NjksIm5iZiI6MTc0MDMyMjU2OSwicGF0aCI6Ii8xNTEzNzk3MDMvNDEyNzI0NjE2LWI3OTc1NzBmLTNlODQtNDEwOS04YWZkLTA5YTc0ZThmZGZmNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMjIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDIyM1QxNDU2MDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jNmJjZTRhYzNhZTcyYzY1MTE3YmE3MWYzMGNmZjFmOGNjZDJmNjhmNjAzNGUxZjVjOTdmZGExYzRkZmMwNmI1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.6R72p4Ps1IeIm0QIoFi0kntJX_MVwkOiDUEw_NU0tIM"
+                    alt="App Mockup 1"
+                    className="w-60 h-50 object-cover rounded-lg shadow-xl border-2 border-gray-700 mx-auto"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <motion.img
+                    src="https://private-user-images.githubusercontent.com/151379703/412724616-b797570f-3e84-4109-8afd-09a74e8fdff4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAzMjI4NjksIm5iZiI6MTc0MDMyMjU2OSwicGF0aCI6Ii8xNTEzNzk3MDMvNDEyNzI0NjE2LWI3OTc1NzBmLTNlODQtNDEwOS04YWZkLTA5YTc0ZThmZGZmNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMjIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDIyM1QxNDU2MDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jNmJjZTRhYzNhZTcyYzY1MTE3YmE3MWYzMGNmZjFmOGNjZDJmNjhmNjAzNGUxZjVjOTdmZGExYzRkZmMwNmI1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.6R72p4Ps1IeIm0QIoFi0kntJX_MVwkOiDUEw_NU0tIM"
+                    alt="App Mockup 1"
+                    className="w-60 h-50 object-cover rounded-lg shadow-xl border-2 border-gray-700 mx-auto"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <motion.img
+                    src="https://private-user-images.githubusercontent.com/151379703/412724616-b797570f-3e84-4109-8afd-09a74e8fdff4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAzMjI4NjksIm5iZiI6MTc0MDMyMjU2OSwicGF0aCI6Ii8xNTEzNzk3MDMvNDEyNzI0NjE2LWI3OTc1NzBmLTNlODQtNDEwOS04YWZkLTA5YTc0ZThmZGZmNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMjIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDIyM1QxNDU2MDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jNmJjZTRhYzNhZTcyYzY1MTE3YmE3MWYzMGNmZjFmOGNjZDJmNjhmNjAzNGUxZjVjOTdmZGExYzRkZmMwNmI1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.6R72p4Ps1IeIm0QIoFi0kntJX_MVwkOiDUEw_NU0tIM"
+                    alt="App Mockup 1"
+                    className="w-60 h-50 object-cover rounded-lg shadow-xl border-2 border-gray-700 mx-auto"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </SwiperSlide>
+              </Swiper>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
 
       {/* Features Section */}
       <section className="relative py-24 bg-gray-200">
