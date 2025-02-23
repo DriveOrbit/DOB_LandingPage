@@ -10,14 +10,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-
 import {
   Car,
   BarChart3,
-  Gauge,
   Bell,
   Fuel,
-  UserPlus,
   QrCode,
   Activity,
   ChevronRight,
@@ -81,7 +78,6 @@ const features = [
       "https://t4.ftcdn.net/jpg/05/82/71/17/240_F_582711786_QIZaSfrv2nKTzej348R8HxbX3GB2vJjl.jpg",
   },
 ];
-
 
 const teamMembers = [
   {
@@ -331,7 +327,10 @@ export default function Home() {
             <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
               Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
             </p>
-            <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white">
+            <Button
+              size="lg"
+              className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
+            >
               Request a Demo <ChevronRight className="ml-2" />
             </Button>
           </motion.div>
@@ -339,10 +338,9 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="relative h-screen flex items-center justify-center bg-black">
+      <section id="about" className="relative h-screen flex items-center justify-center bg-black">
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 to-black/70 z-0"></div>
-
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
@@ -359,7 +357,10 @@ export default function Home() {
               <p className="text-lg md:text-xl text-gray-300 mb-8">
                 DriveOrbit is a smart fleet management solution designed to optimize vehicle usage, enhance security, and improve operational efficiency. Our platform empowers businesses with real-time tracking, driver monitoring, and automated insights to reduce misuse and maximize productivity. By leveraging cutting-edge technology, DriveOrbit ensures seamless fleet operations, helping organizations manage their vehicles smarter and safer.
               </p>
-              <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white">
+              <Button
+                size="lg"
+                className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
+              >
                 Learn More <ChevronRight className="ml-2" />
               </Button>
             </motion.div>
@@ -456,12 +457,10 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* Features Section */}
-      <section className="relative py-24 bg-gray-200">
+      <section id="features" className="relative py-24 bg-gray-200">
         {/* White Overlay at the Bottom */}
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
-
         <div className="container mx-auto px-4 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -474,11 +473,9 @@ export default function Home() {
               Powerful Features for Modern Fleet Management
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to manage your fleet efficiently and safely in
-              one integrated platform.
+              Everything you need to manage your fleet efficiently and safely in one integrated platform.
             </p>
           </motion.div>
-
           <div className="space-y-24">
             {features.map((feature, index) => (
               <motion.div
@@ -501,7 +498,6 @@ export default function Home() {
                     />
                   </div>
                 </div>
-
                 {/* Feature Text */}
                 <div className="w-full lg:w-1/2 space-y-6">
                   <div className="inline-block p-3 bg-primary/10 rounded-2xl text-primary">
@@ -521,7 +517,7 @@ export default function Home() {
       </section>
 
       {/* Team Members Section */}
-      <section className="py-24 bg-muted/50">
+      <section id="team" className="py-24 bg-muted/50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -534,11 +530,9 @@ export default function Home() {
               Meet the team behind DriveOrbit
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We are a group of passionate Undergraduates dedicated to
-              revolutionizing the Future
+              We are a group of passionate Undergraduates dedicated to revolutionizing the Future
             </p>
           </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <motion.div
@@ -558,9 +552,7 @@ export default function Home() {
                       />
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    {member.name}
-                  </h3>
+                  <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
                   <p className="text-sm text-primary mb-4">{member.role}</p>
                   <p className="text-muted-foreground mb-6">{member.bio}</p>
                   <div className="flex justify-center space-x-4">
@@ -590,8 +582,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-primary text-primary-foreground">
+      {/* CTA / Join Section */}
+      <section id="join" className="py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -604,8 +596,7 @@ export default function Home() {
               Start Managing Your Fleet Today!
             </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join thousands of fleet managers who trust DriveOrbit for their
-              operations
+              Join thousands of fleet managers who trust DriveOrbit for their operations
             </p>
             <Button
               size="lg"
@@ -626,8 +617,7 @@ export default function Home() {
             <div>
               <h3 className="font-bold mb-4">DriveOrbit</h3>
               <p className="text-sm text-gray-600">
-                Revolutionizing fleet management with smart technology and real-time
-                insights.
+                Revolutionizing fleet management with smart technology and real-time insights.
               </p>
               <div className="mt-4">
                 <p className="text-sm text-gray-600">Tel: 123-456-7890</p>
@@ -639,7 +629,6 @@ export default function Home() {
                 </p>
               </div>
             </div>
-
             {/* Column 2: Technology */}
             <div>
               <h4 className="font-semibold mb-4">Technology</h4>
@@ -652,7 +641,6 @@ export default function Home() {
                 <li>Safety Management</li>
               </ul>
             </div>
-
             {/* Column 3: About */}
             <div>
               <h4 className="font-semibold mb-4">About</h4>
@@ -663,7 +651,6 @@ export default function Home() {
                 <li>Press</li>
               </ul>
             </div>
-
             {/* Column 4: Connect */}
             <div>
               <h4 className="font-semibold mb-4">Connect</h4>
@@ -694,7 +681,6 @@ export default function Home() {
                 </a>
               </div>
             </div>
-
             {/* Column 5: Subscription */}
             <div>
               <h4 className="font-semibold mb-4">Subscribe</h4>
@@ -722,7 +708,6 @@ export default function Home() {
               </form>
             </div>
           </div>
-
           {/* Bottom Footer */}
           <div className="border-t border-gray-300 pt-8 text-center text-sm text-gray-600">
             <p>&copy; {new Date().getFullYear()} DriveOrbit. All rights reserved.</p>
