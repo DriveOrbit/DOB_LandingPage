@@ -165,130 +165,128 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navbar */}
-<motion.nav
-  initial={{ opacity: 0 }}
-  animate={{ opacity: showNavbar ? 1 : 0 }}
-  transition={{ duration: 0.3 }}
-  className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-    navbarBackground 
-      ? "bg-black text-white shadow-md"  // When scrolled
-      : "bg-white text-gray-800"         // When at top
-  }`}
->
-  <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-    {/* Logo */}
-    <div className="flex items-center space-x-2">
-      <img
-        src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
-        alt="DriveOrbit Logo"
-        className="h-10"
-      />
-      <span className={`text-xl font-bold ${
-        navbarBackground ? "text-white" : "text-gray-800"
-      }`}>
-        DriveOrbit
-      </span>
-    </div>
-
-    {/* Desktop Menu */}
-    <div className="hidden md:flex space-x-8 text-sm font-medium items-center">
-      <a 
-        href="#about" 
-        className={`hover:text-primary transition-colors ${
-          navbarBackground ? "text-white" : "text-gray-800"
-        }`}
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showNavbar ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 backdrop-blur-md ${navbarBackground
+          ? "bg-black/70 text-white shadow-md"  // When scrolled
+          : "bg-white/10 text-white"         // When at top
+          }`}
       >
-        About
-      </a>
-      <a 
-        href="#features" 
-        className={`hover:text-primary transition-colors ${
-          navbarBackground ? "text-white" : "text-gray-800"
-        }`}
-      >
-        Features
-      </a>
-      <a 
-        href="#team" 
-        className={`hover:text-primary transition-colors ${
-          navbarBackground ? "text-white" : "text-gray-800"
-        }`}
-      >
-        Team
-      </a>
-      <a
-        href="#join"
-        className={`px-4 py-2 rounded-lg transition-colors ${
-          navbarBackground 
-            ? "bg-white text-black hover:bg-gray-100" 
-            : "bg-black text-white hover:bg-gray-800"
-        }`}
-      >
-        Join Us
-      </a>
-    </div>
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          {/* Logo */}
+          <div className="flex items-center space-x-2">
+            <img
+              src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
+              alt="DriveOrbit Logo"
+              className="h-10"
+            />
+            <span className={`text-xl font-bold ${navbarBackground ? "text-white" : "text-white"
+              }`}>
+              DriveOrbit
+            </span>
+          </div>
 
-    {/* Mobile Menu Toggle */}
-    <div className="md:hidden">
-      <button
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className={`hover:text-primary focus:outline-none ${
-          navbarBackground ? "text-white" : "text-gray-800"
-        }`}
-      >
-        {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-      </button>
-    </div>
-  </div>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex space-x-8 text-sm font-medium items-center">
+            <a
+              href="#about"
+              className={`hover:text-primary transition-colors ${navbarBackground ? "text-white" : "text-white"
+                }`}
+            >
+              About
+            </a>
+            <a
+              href="#features"
+              className={`hover:text-primary transition-colors ${navbarBackground ? "text-white" : "text-white"
+                }`}
+            >
+              Features
+            </a>
+            <a
+              href="#team"
+              className={`hover:text-primary transition-colors ${navbarBackground ? "text-white" : "text-white"
+                }`}
+            >
+              Team
+            </a>
+            <a
+              href="#join"
+              className={`px-4 py-2 rounded-lg transition-colors ${navbarBackground
+                ? "bg-white text-black hover:bg-gray-100"
+                : "bg-black text-white hover:bg-gray-800"
+                }`}
+            >
+              Join Us
+            </a>
+          </div>
 
-  {/* Mobile Menu (keep existing styles) */}
-  <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ${
-    isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-  } md:hidden`}>
-    {/* Keep existing mobile menu content */}
-  </div>
-</motion.nav>
-     {/* Hero Section */}
-<section className="relative h-screen flex items-center justify-center overflow-hidden">
-  {/* Video Background */}
-  <video
-    autoPlay
-    muted
-    loop
-    className="absolute inset-0 w-full h-full object-cover z-0"
-  >
-    <source
-      src="https://cdn.pixabay.com/video/2018/11/29/19627-304735769_tiny.mp4"
-      type="video/webm"
-    />
-    Your browser does not support the video tag.
-  </video>
+          {/* Mobile Menu Toggle */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`hover:text-primary focus:outline-none ${navbarBackground ? "text-white" : "text-gray-800"
+                }`}
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
 
-  {/* Overlay to darken the video background */}
-  <div className="absolute inset-0 bg-black/50 z-0"></div>
+        {/* Mobile Menu (keep existing styles) */}
+        <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          } md:hidden`}>
+          {/* Keep existing mobile menu content */}
+        </div>
+      </motion.nav>
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source
+            src="https://cdn.pixabay.com/video/2018/11/29/19627-304735769_tiny.mp4"
+            type="video/webm"
+          />
+          Your browser does not support the video tag.
+        </video>
 
-  <div className="container mx-auto px-4 z-10">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2 }}
-      className="text-center"
-    >
-      <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-        DriveOrbit – Smarter Fleet Management for a Safer Future
-      </h1>
-      <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
-        Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
-      </p>
-      <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white">
-        Request a Demo <ChevronRight className="ml-2" />
-      </Button>
-    </motion.div>
-  </div>
-</section>
+        {/* Dark Overlay to Darken the Video Background */}
+        <div className="absolute inset-0 bg-black/50 z-10"></div> {/* Keep this dark overlay */}
+
+        {/* Updated Linear Overlay at the Bottom */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-gray-300 to-transparent z-20"></div> {/* Changed to from-gray-200 */}
+
+        <div className="container mx-auto px-4 z-30">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+              DriveOrbit – Smarter Fleet Management for a Safer Future
+            </h1>
+            <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
+              Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
+            </p>
+            <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white">
+              Request a Demo <ChevronRight className="ml-2" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
       {/* Features Section */}
-      <section className="py-24 bg-muted/50">
-        <div className="container mx-auto px-4">
+      <section className="relative py-24 bg-gray-200"> {/* Light gray background */}
+        {/* White Overlay at the Bottom */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
+
+        <div className="container mx-auto px-4 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -296,7 +294,9 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Powerful Features for Modern Fleet Management</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Powerful Features for Modern Fleet Management
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Everything you need to manage your fleet efficiently and safely in one integrated platform.
             </p>
@@ -312,6 +312,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}
               >
+                {/* Feature Image */}
                 <div className="w-full lg:w-1/2">
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-3xl" />
@@ -322,6 +323,8 @@ export default function Home() {
                     />
                   </div>
                 </div>
+
+                {/* Feature Text */}
                 <div className="w-full lg:w-1/2 space-y-6">
                   <div className="inline-block p-3 bg-primary/10 rounded-2xl text-primary">
                     {feature.icon}
@@ -338,6 +341,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       {/* Team Members Section */}
       <section className="py-24 bg-muted/50">
@@ -367,7 +371,7 @@ export default function Home() {
                 <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 group">
                   <div className="relative mx-auto mb-6">
                     <div className="w-32 h-32 mx-auto rounded-full overflow-hidden">
-                    <img
+                      <img
                         src={member.image}
                         alt={member.name}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
@@ -378,7 +382,7 @@ export default function Home() {
                   <p className="text-sm text-primary mb-4">{member.role}</p>
                   <p className="text-muted-foreground mb-6">{member.bio}</p>
                   <div className="flex justify-center space-x-4">
-                  <a href={member.social.Instagram} className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href={member.social.Instagram} className="text-muted-foreground hover:text-primary transition-colors">
                       <Instagram className="h-5 w-5" />
                     </a>
                     <a href={member.social.linkedin} className="text-muted-foreground hover:text-primary transition-colors">
