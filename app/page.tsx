@@ -86,13 +86,13 @@ const teamMembers = [
     image: "https://avatars.githubusercontent.com/u/122157771?v=4",
     bio: "Leading our technical innovation with 15+ years of experience in fleet management systems.",
     social: {
-      Instagram: "https://www.instagram.com/_senuka.f_/",
+      Instagram: "https://www.instagram.com/senuka.f/",
       linkedin: "https://www.linkedin.com/in/senuka-fernando/",
       github: "https://github.com/senukafer12",
     },
   },
   {
-    name: "Sachitha Sithuruwan",
+    name: "Sachintha Sithuruwan",
     role: "Full-Stack Developer",
     image: "https://avatars.githubusercontent.com/u/160252042?v=4",
     bio: "Leading our technical innovation with 15+ years of experience in fleet management systems.",
@@ -303,7 +303,7 @@ export default function Home() {
         >
           <source
             src="https://cdn.pixabay.com/video/2018/11/29/19627-304735769_tiny.mp4"
-            type="video/webm"
+            type="video/mp4"
           />
           Your browser does not support the video tag.
         </video>
@@ -382,8 +382,8 @@ export default function Home() {
                 }}
                 pagination={{
                   clickable: true,
-                  bulletClass: "swiper-pagination-bullet", // Custom class for pagination dots
-                  bulletActiveClass: "swiper-pagination-bullet-active", // Custom class for active dot
+                  bulletClass: "swiper-pagination-bullet",
+                  bulletActiveClass: "swiper-pagination-bullet-active",
                 }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
@@ -446,10 +446,10 @@ export default function Home() {
               </Swiper>
               <style jsx global>{`
                 .swiper-pagination-bullet {
-                  background-color: #ccc !important; /* Inactive dot color */
+                  background-color: #ccc !important;
                 }
                 .swiper-pagination-bullet-active {
-                  background-color: #fff !important; /* Active dot color */
+                  background-color: #fff !important;
                 }
               `}</style>
             </motion.div>
@@ -612,46 +612,24 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-12 bg-gray-100">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-8">
             {/* Column 1: Logo and Contact Info */}
             <div>
               <h3 className="font-bold mb-4">DriveOrbit</h3>
               <p className="text-sm text-gray-600">
                 Revolutionizing fleet management with smart technology and real-time insights.
               </p>
-              <div className="mt-4">
-                <p className="text-sm text-gray-600">Tel: 123-456-7890</p>
-                <p className="text-sm text-gray-600">
-                  Email: driveorbitsocial@gmail.com
-                </p>
-                <p className="text-sm text-gray-600">
-                  Address: 123, Chandeera road, Divulapitiya.
-                </p>
-              </div>
             </div>
-            {/* Column 2: Technology */}
-            <div>
-              <h4 className="font-semibold mb-4">Technology</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>Real-Time Tracking</li>
-                <li>Performance Analytics</li>
-                <li>Smart Vehicle Access</li>
-                <li>Predictive Maintenance</li>
-                <li>Fuel Optimization</li>
-                <li>Safety Management</li>
-              </ul>
-            </div>
-            {/* Column 3: About */}
+            {/* Column 2: About */}
             <div>
               <h4 className="font-semibold mb-4">About</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>Our Mission</li>
-                <li>Our Team</li>
-                <li>Careers</li>
-                <li>Press</li>
-              </ul>
+              <div className="mt-4">
+                <p className="text-sm text-gray-600"><b>Tel:</b> 123-456-7890</p>
+                <p className="text-sm text-gray-600"><b>Email:</b> driveorbitsocial@gmail.com</p>
+                <p className="text-sm text-gray-600"><b>Address:</b> 123, Chandeera road, Divulapitiya.</p>
+              </div>
             </div>
-            {/* Column 4: Connect */}
+            {/* Column 3: Connect */}
             <div>
               <h4 className="font-semibold mb-4">Connect</h4>
               <div className="flex space-x-4">
@@ -673,15 +651,9 @@ export default function Home() {
                 >
                   <Github className="h-5 w-5" />
                 </a>
-                <a
-                  href="#"
-                  className="text-gray-600 hover:text-primary transition-colors"
-                >
-                  <Facebook className="h-5 w-5" />
-                </a>
               </div>
             </div>
-            {/* Column 5: Subscription */}
+            {/* Column 4: Subscription */}
             <div>
               <h4 className="font-semibold mb-4">Subscribe</h4>
               <p className="text-sm text-gray-600 mb-4">
