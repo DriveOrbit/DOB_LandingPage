@@ -370,7 +370,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="w-full max-w-lg mx-auto lg:max-w-none"
+              className="w-full max-w-sm mx-auto lg:max-w-none"
             >
               <Swiper
                 spaceBetween={30}
@@ -381,49 +381,76 @@ export default function Home() {
                 }}
                 pagination={{
                   clickable: true,
+                  bulletClass: "swiper-pagination-bullet", // Custom class for pagination dots
+                  bulletActiveClass: "swiper-pagination-bullet-active", // Custom class for active dot
                 }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
               >
-                {/* Add your app mockup images here */}
                 <SwiperSlide>
                   <motion.img
-                    src="https://private-user-images.githubusercontent.com/151379703/412724616-b797570f-3e84-4109-8afd-09a74e8fdff4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAzMjI4NjksIm5iZiI6MTc0MDMyMjU2OSwicGF0aCI6Ii8xNTEzNzk3MDMvNDEyNzI0NjE2LWI3OTc1NzBmLTNlODQtNDEwOS04YWZkLTA5YTc0ZThmZGZmNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMjIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDIyM1QxNDU2MDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jNmJjZTRhYzNhZTcyYzY1MTE3YmE3MWYzMGNmZjFmOGNjZDJmNjhmNjAzNGUxZjVjOTdmZGExYzRkZmMwNmI1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.6R72p4Ps1IeIm0QIoFi0kntJX_MVwkOiDUEw_NU0tIM"
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_195845-removebg-preview.png?raw=true"
                     alt="App Mockup 1"
-                    className="w-60 h-50 object-cover rounded-lg shadow-xl border-2 border-gray-700 mx-auto"
+                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   />
                 </SwiperSlide>
                 <SwiperSlide>
                   <motion.img
-                    src="https://private-user-images.githubusercontent.com/151379703/412724616-b797570f-3e84-4109-8afd-09a74e8fdff4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAzMjI4NjksIm5iZiI6MTc0MDMyMjU2OSwicGF0aCI6Ii8xNTEzNzk3MDMvNDEyNzI0NjE2LWI3OTc1NzBmLTNlODQtNDEwOS04YWZkLTA5YTc0ZThmZGZmNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMjIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDIyM1QxNDU2MDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jNmJjZTRhYzNhZTcyYzY1MTE3YmE3MWYzMGNmZjFmOGNjZDJmNjhmNjAzNGUxZjVjOTdmZGExYzRkZmMwNmI1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.6R72p4Ps1IeIm0QIoFi0kntJX_MVwkOiDUEw_NU0tIM"
-                    alt="App Mockup 1"
-                    className="w-60 h-50 object-cover rounded-lg shadow-xl border-2 border-gray-700 mx-auto"
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_195907-removebg-preview.png?raw=true"
+                    alt="App Mockup 2"
+                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   />
                 </SwiperSlide>
                 <SwiperSlide>
                   <motion.img
-                    src="https://private-user-images.githubusercontent.com/151379703/412724616-b797570f-3e84-4109-8afd-09a74e8fdff4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAzMjI4NjksIm5iZiI6MTc0MDMyMjU2OSwicGF0aCI6Ii8xNTEzNzk3MDMvNDEyNzI0NjE2LWI3OTc1NzBmLTNlODQtNDEwOS04YWZkLTA5YTc0ZThmZGZmNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMjIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDIyM1QxNDU2MDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jNmJjZTRhYzNhZTcyYzY1MTE3YmE3MWYzMGNmZjFmOGNjZDJmNjhmNjAzNGUxZjVjOTdmZGExYzRkZmMwNmI1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.6R72p4Ps1IeIm0QIoFi0kntJX_MVwkOiDUEw_NU0tIM"
-                    alt="App Mockup 1"
-                    className="w-60 h-50 object-cover rounded-lg shadow-xl border-2 border-gray-700 mx-auto"
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_195919-removebg-preview.png?raw=true"
+                    alt="App Mockup 3"
+                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   />
                 </SwiperSlide>
                 <SwiperSlide>
                   <motion.img
-                    src="https://private-user-images.githubusercontent.com/151379703/412724616-b797570f-3e84-4109-8afd-09a74e8fdff4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAzMjI4NjksIm5iZiI6MTc0MDMyMjU2OSwicGF0aCI6Ii8xNTEzNzk3MDMvNDEyNzI0NjE2LWI3OTc1NzBmLTNlODQtNDEwOS04YWZkLTA5YTc0ZThmZGZmNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMjIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDIyM1QxNDU2MDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jNmJjZTRhYzNhZTcyYzY1MTE3YmE3MWYzMGNmZjFmOGNjZDJmNjhmNjAzNGUxZjVjOTdmZGExYzRkZmMwNmI1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.6R72p4Ps1IeIm0QIoFi0kntJX_MVwkOiDUEw_NU0tIM"
-                    alt="App Mockup 1"
-                    className="w-60 h-50 object-cover rounded-lg shadow-xl border-2 border-gray-700 mx-auto"
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_195954-removebg-preview.png?raw=true"
+                    alt="App Mockup 4"
+                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <motion.img
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_200004-removebg-preview.png?raw=true"
+                    alt="App Mockup 5"
+                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <motion.img
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_200025-removebg-preview.png?raw=true"
+                    alt="App Mockup 6"
+                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   />
                 </SwiperSlide>
               </Swiper>
+              <style jsx global>{`
+                .swiper-pagination-bullet {
+                  background-color: #ccc !important; /* Inactive dot color */
+                }
+                .swiper-pagination-bullet-active {
+                  background-color: #fff !important; /* Active dot color */
+                }
+              `}</style>
             </motion.div>
           </div>
         </div>
