@@ -29,38 +29,50 @@ const features = [
   {
     icon: <Car className="h-12 w-12" />,
     title: "REAL TIME VEHICLE TRACKING",
-    description: "Real-time route tracking provides enhanced oversight and control over vehicle operations. Administrators can monitor each vehicle's exact location on a map interface, ensuring vehicles stay on their intended route and reducing unauthorized deviations. The system also logs route history, capturing details like stops, travel time, and any deviations, which can be used for audits and route optimization.",
-    image: "https://t3.ftcdn.net/jpg/09/86/01/52/240_F_986015247_k85qqT9bRgLgJ356YJWpXXPPuLm4QB9o.jpg",
+    description:
+      "Real-time route tracking provides enhanced oversight and control over vehicle operations. Administrators can monitor each vehicle's exact location on a map interface, ensuring vehicles stay on their intended route and reducing unauthorized deviations. The system also logs route history, capturing details like stops, travel time, and any deviations, which can be used for audits and route optimization.",
+    image:
+      "https://t3.ftcdn.net/jpg/09/86/01/52/240_F_986015247_k85qqT9bRgLgJ356YJWpXXPPuLm4QB9o.jpg",
   },
   {
     icon: <BarChart3 className="h-12 w-12" />,
     title: "DRIVER PERFORMANCE",
-    description: "Driver performance tracking involves monitoring and analyzing various aspects of a driver's behavior to ensure safety, efficiency, and adherence to company standards. Key metrics such as speeding, harsh braking, rapid acceleration, and idle time are closely tracked to evaluate driving habits. This comprehensive approach helps companies improve safety, recognize top drivers, and optimize fleet performance.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
+    description:
+      "Driver performance tracking involves monitoring and analyzing various aspects of a driver's behavior to ensure safety, efficiency, and adherence to company standards. Key metrics such as speeding, harsh braking, rapid acceleration, and idle time are closely tracked to evaluate driving habits. This comprehensive approach helps companies improve safety, recognize top drivers, and optimize fleet performance.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
   },
   {
     icon: <QrCode className="h-12 w-12" />,
     title: "SMART VEHICLE ACCESS",
-    description: "Streamline vehicle assignments and access control with our innovative QR code system. Enable secure and contactless vehicle check-in/check-out, while maintaining a detailed digital record of vehicle usage.",
-    image: "https://t3.ftcdn.net/jpg/04/41/09/04/240_F_441090449_LGnk86BswcQwVeuNMafN1HEqAV7A36Kl.jpg",
+    description:
+      "Streamline vehicle assignments and access control with our innovative QR code system. Enable secure and contactless vehicle check-in/check-out, while maintaining a detailed digital record of vehicle usage.",
+    image:
+      "https://t3.ftcdn.net/jpg/04/41/09/04/240_F_441090449_LGnk86BswcQwVeuNMafN1HEqAV7A36Kl.jpg",
   },
   {
     icon: <Bell className="h-12 w-12" />,
     title: "MAINTENANCE ALERTS",
-    description: "Maintenance alerts help manage vehicle upkeep by sending automatic reminders for service schedules, maintenance checks, or when a vehicle’s performance drops. These alerts are triggered based on factors like engine performance, and the time since the last service, helping ensure that routine maintenance is not overlooked. By receiving these reminders, fleet managers can schedule repairs or maintenance when they are needed.",
-    image: "https://t4.ftcdn.net/jpg/09/15/24/87/240_F_915248739_vBh9NzvgNZkcMPB4mGj6BjsLr2w12B9Z.jpg",
+    description:
+      "Maintenance alerts help manage vehicle upkeep by sending automatic reminders for service schedules, maintenance checks, or when a vehicle’s performance drops. These alerts are triggered based on factors like engine performance, and the time since the last service, helping ensure that routine maintenance is not overlooked. By receiving these reminders, fleet managers can schedule repairs or maintenance when they are needed.",
+    image:
+      "https://t4.ftcdn.net/jpg/09/15/24/87/240_F_915248739_vBh9NzvgNZkcMPB4mGj6BjsLr2w12B9Z.jpg",
   },
   {
     icon: <Fuel className="h-12 w-12" />,
     title: "FUEL OPTIMIZATION",
-    description: "Maximize fuel efficiency across your entire fleet with our intelligent monitoring system. Track consumption patterns, identify inefficiencies, and implement data-driven strategies to reduce fuel costs.",
-    image: "https://t4.ftcdn.net/jpg/11/74/64/43/240_F_1174644354_pByY99JZRngTUe0OOaLeg7XBJuPpWj8O.jpg",
+    description:
+      "Maximize fuel efficiency across your entire fleet with our intelligent monitoring system. Track consumption patterns, identify inefficiencies, and implement data-driven strategies to reduce fuel costs.",
+    image:
+      "https://t4.ftcdn.net/jpg/11/74/64/43/240_F_1174644354_pByY99JZRngTUe0OOaLeg7XBJuPpWj8O.jpg",
   },
   {
     icon: <Activity className="h-12 w-12" />,
     title: "PERFORMANCE ANALYTICS",
-    description: "Performance analytics provide detailed reports on key metrics like fuel use, vehicle performance, and driver behavior. These insights help fleet managers identify inefficiencies, optimize operations, and reduce costs for improved productivity.",
-    image: "https://t4.ftcdn.net/jpg/05/82/71/17/240_F_582711786_QIZaSfrv2nKTzej348R8HxbX3GB2vJjl.jpg",
+    description:
+      "Performance analytics provide detailed reports on key metrics like fuel use, vehicle performance, and driver behavior. These insights help fleet managers identify inefficiencies, optimize operations, and reduce costs for improved productivity.",
+    image:
+      "https://t4.ftcdn.net/jpg/05/82/71/17/240_F_582711786_QIZaSfrv2nKTzej348R8HxbX3GB2vJjl.jpg",
   },
 ];
 
@@ -83,7 +95,8 @@ const teamMembers = [
     bio: "Leading our technical innovation with 15+ years of experience in fleet management systems.",
     social: {
       Instagram: "https://www.instagram.com/sachintha_vithanawasam/",
-      linkedin: "https://www.linkedin.com/in/sachintha-vithanawasam-6bb9b4287/",
+      linkedin:
+        "https://www.linkedin.com/in/sachintha-vithanawasam-6bb9b4287/",
       github: "https://github.com/SachiVithX",
     },
   },
@@ -170,11 +183,10 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: showNavbar ? 1 : 0 }}
         transition={{ duration: 0.3 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-          navbarBackground 
-            ? "bg-black text-white shadow-md"  // When scrolled
-            : "bg-white text-gray-800"         // When at top
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${navbarBackground
+            ? "bg-black text-white shadow-md"
+            : "bg-white text-gray-800"
+          }`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo */}
@@ -184,46 +196,43 @@ export default function Home() {
               alt="DriveOrbit Logo"
               className="h-10"
             />
-            <span className={`text-xl font-bold ${
-              navbarBackground ? "text-white" : "text-gray-800"
-            }`}>
+            <span
+              className={`text-xl font-bold ${navbarBackground ? "text-white" : "text-gray-800"
+                }`}
+            >
               DriveOrbit
             </span>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 text-sm font-medium items-center">
-            <a 
-              href="#about" 
-              className={`hover:text-primary transition-colors ${
-                navbarBackground ? "text-white" : "text-gray-800"
-              }`}
+            <a
+              href="#about"
+              className={`hover:text-primary transition-colors ${navbarBackground ? "text-white" : "text-gray-800"
+                }`}
             >
               About
             </a>
-            <a 
-              href="#features" 
-              className={`hover:text-primary transition-colors ${
-                navbarBackground ? "text-white" : "text-gray-800"
-              }`}
+            <a
+              href="#features"
+              className={`hover:text-primary transition-colors ${navbarBackground ? "text-white" : "text-gray-800"
+                }`}
             >
               Features
             </a>
-            <a 
-              href="#team" 
-              className={`hover:text-primary transition-colors ${
-                navbarBackground ? "text-white" : "text-gray-800"
-              }`}
+            <a
+              href="#team"
+              className={`hover:text-primary transition-colors ${navbarBackground ? "text-white" : "text-gray-800"
+                }`}
             >
               Team
             </a>
             <a
               href="#join"
-              className={`px-4 py-2 rounded-lg transition-colors ${
-                navbarBackground 
-                  ? "bg-white text-black hover:bg-gray-100" 
+              className={`px-4 py-2 rounded-lg transition-colors ${navbarBackground
+                  ? "bg-white text-black hover:bg-gray-100"
                   : "bg-black text-white hover:bg-gray-800"
-              }`}
+                }`}
             >
               Join Us
             </a>
@@ -233,29 +242,49 @@ export default function Home() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`hover:text-primary focus:outline-none ${
-                navbarBackground ? "text-white" : "text-gray-800"
-              }`}
+              className={`hover:text-primary focus:outline-none ${navbarBackground ? "text-white" : "text-gray-800"
+                }`}
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ${
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        } md:hidden`}>
+        <div
+          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+            } md:hidden`}
+        >
           <div className="flex justify-end p-4">
             <button onClick={() => setIsMobileMenuOpen(false)}>
               <X className="h-6 w-6" />
             </button>
           </div>
           <ul className="flex flex-col space-y-4 p-4">
-            <li><a href="#about" className="hover:underline">About</a></li>
-            <li><a href="#features" className="hover:underline">Features</a></li>
-            <li><a href="#team" className="hover:underline">Team</a></li>
-            <li><a href="#join" className="hover:underline">Join Us</a></li>
+            <li>
+              <a href="#about" className="hover:underline">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#features" className="hover:underline">
+                Features
+              </a>
+            </li>
+            <li>
+              <a href="#team" className="hover:underline">
+                Team
+              </a>
+            </li>
+            <li>
+              <a href="#join" className="hover:underline">
+                Join Us
+              </a>
+            </li>
           </ul>
         </div>
       </motion.nav>
@@ -290,9 +319,13 @@ export default function Home() {
               DriveOrbit – Smarter Fleet Management for a Safer Future
             </h1>
             <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
-              Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
+              Transform your fleet operations with real-time tracking, smart
+              monitoring, and data-driven insights.
             </p>
-            <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white">
+            <Button
+              size="lg"
+              className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
+            >
               Request a Demo <ChevronRight className="ml-2" />
             </Button>
           </motion.div>
@@ -300,8 +333,11 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-muted/50">
-        <div className="container mx-auto px-4">
+      <section className="relative py-24 bg-gray-200">
+        {/* White Overlay at the Bottom */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
+
+        <div className="container mx-auto px-4 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -309,9 +345,12 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Powerful Features for Modern Fleet Management</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Powerful Features for Modern Fleet Management
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to manage your fleet efficiently and safely in one integrated platform.
+              Everything you need to manage your fleet efficiently and safely in
+              one integrated platform.
             </p>
           </motion.div>
 
@@ -323,8 +362,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}
+                className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                  } items-center gap-12`}
               >
+                {/* Feature Image */}
                 <div className="w-full lg:w-1/2">
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-3xl" />
@@ -335,6 +376,8 @@ export default function Home() {
                     />
                   </div>
                 </div>
+
+                {/* Feature Text */}
                 <div className="w-full lg:w-1/2 space-y-6">
                   <div className="inline-block p-3 bg-primary/10 rounded-2xl text-primary">
                     {feature.icon}
@@ -362,9 +405,12 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet the team behind DriveOrbit</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Meet the team behind DriveOrbit
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We are a group of passionate Undergraduates dedicated to revolutionizing the Future
+              We are a group of passionate Undergraduates dedicated to
+              revolutionizing the Future
             </p>
           </motion.div>
 
@@ -387,17 +433,28 @@ export default function Home() {
                       />
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {member.name}
+                  </h3>
                   <p className="text-sm text-primary mb-4">{member.role}</p>
                   <p className="text-muted-foreground mb-6">{member.bio}</p>
                   <div className="flex justify-center space-x-4">
-                    <a href={member.social.Instagram} className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href={member.social.Instagram}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
                       <Instagram className="h-5 w-5" />
                     </a>
-                    <a href={member.social.linkedin} className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href={member.social.linkedin}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
                       <Linkedin className="h-5 w-5" />
                     </a>
-                    <a href={member.social.github} className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href={member.social.github}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
                       <Github className="h-5 w-5" />
                     </a>
                   </div>
@@ -418,9 +475,12 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Managing Your Fleet Today!</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Start Managing Your Fleet Today!
+            </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join thousands of fleet managers who trust DriveOrbit for their operations
+              Join thousands of fleet managers who trust DriveOrbit for their
+              operations
             </p>
             <Button
               size="lg"
@@ -441,12 +501,17 @@ export default function Home() {
             <div>
               <h3 className="font-bold mb-4">DriveOrbit</h3>
               <p className="text-sm text-gray-600">
-                Revolutionizing fleet management with smart technology and real-time insights.
+                Revolutionizing fleet management with smart technology and real-time
+                insights.
               </p>
               <div className="mt-4">
                 <p className="text-sm text-gray-600">Tel: 123-456-7890</p>
-                <p className="text-sm text-gray-600">Email: driveorbitsocial@gmail.com</p>
-                <p className="text-sm text-gray-600">Address: 123, Chandeera road, Divulapitiya.</p>
+                <p className="text-sm text-gray-600">
+                  Email: driveorbitsocial@gmail.com
+                </p>
+                <p className="text-sm text-gray-600">
+                  Address: 123, Chandeera road, Divulapitiya.
+                </p>
               </div>
             </div>
 
@@ -478,16 +543,28 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Connect</h4>
               <div className="flex space-x-4">
-                <a href="https://www.instagram.com/driveorbit.lk/" className="text-gray-600 hover:text-primary transition-colors">
+                <a
+                  href="https://www.instagram.com/driveorbit.lk/"
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
                   <Instagram className="h-5 w-5" />
                 </a>
-                <a href="https://www.linkedin.com/company/driveorbit-lk/" className="text-gray-600 hover:text-primary transition-colors">
+                <a
+                  href="https://www.linkedin.com/company/driveorbit-lk/"
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a href="https://github.com/DriveOrbit" className="text-gray-600 hover:text-primary transition-colors">
+                <a
+                  href="https://github.com/DriveOrbit"
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
                   <Github className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-gray-600 hover:text-primary transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
                   <Facebook className="h-5 w-5" />
                 </a>
               </div>
@@ -500,14 +577,21 @@ export default function Home() {
                 Sign up to receive DriveOrbit news and updates
               </p>
               <form className="flex flex-col space-y-2">
-                <input type="email" placeholder="Email" className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                />
                 <label className="flex items-center space-x-2">
                   <input type="checkbox" className="form-checkbox" />
                   <span className="text-sm text-gray-600">
                     Yes, subscribe me to your newsletter.
                   </span>
                 </label>
-                <button type="submit" className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors">
+                <button
+                  type="submit"
+                  className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors"
+                >
                   Subscribe
                 </button>
               </form>
