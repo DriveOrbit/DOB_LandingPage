@@ -153,6 +153,7 @@ export default function Home() {
   const [showNavbar, setShowNavbar] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [navbarBackground, setNavbarBackground] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -170,10 +171,17 @@ export default function Home() {
       } else {
         setNavbarBackground(false);
       }
+
+      // Calculate scroll progress
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      const totalScroll = docHeight - windowHeight;
+      const progress = (scrollTop / totalScroll) * 100;
+      setScrollProgress(progress);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -181,14 +189,25 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Scroll Indicator */}
+      <div className="fixed top-0 left-0 right-0 h-1 z-40 bg-gray-700">
+        <motion.div
+          className="h-full bg-primary"
+          style={{ width: `${scrollProgress}%` }}
+          initial={{ width: 0 }}
+          animate={{ width: `${scrollProgress}%` }}
+          transition={{ duration: 0.3 }}
+        />
+      </div>
+
       {/* Navbar */}
       <motion.nav
         initial={{ opacity: 0 }}
         animate={{ opacity: showNavbar ? 1 : 0 }}
         transition={{ duration: 0.3 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${navbarBackground
-          ? "bg-black text-white shadow-md"
-          : "bg-white text-gray-800"
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 backdrop-blur-md ${navbarBackground
+          ? "bg-black/30 text-white shadow-md" // When scrolled: reduced opacity and blur
+          : "bg-transparent text-white" // When at top: transparent background
           }`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -199,10 +218,7 @@ export default function Home() {
               alt="DriveOrbit Logo"
               className="h-10"
             />
-            <span
-              className={`text-xl font-bold ${navbarBackground ? "text-white" : "text-gray-800"
-                }`}
-            >
+            <span className="text-xl font-bold text-white">
               DriveOrbit
             </span>
           </div>
@@ -211,31 +227,28 @@ export default function Home() {
           <div className="hidden md:flex space-x-8 text-sm font-medium items-center">
             <a
               href="#about"
-              className={`hover:text-primary transition-colors ${navbarBackground ? "text-white" : "text-gray-800"
-                }`}
+              className="relative hover:text-blue-400 transition-colors group"
             >
               About
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a
               href="#features"
-              className={`hover:text-primary transition-colors ${navbarBackground ? "text-white" : "text-gray-800"
-                }`}
+              className="relative hover:text-blue-400 transition-colors group"
             >
               Features
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a
               href="#team"
-              className={`hover:text-primary transition-colors ${navbarBackground ? "text-white" : "text-gray-800"
-                }`}
+              className="relative hover:text-blue-400 transition-colors group"
             >
               Team
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a
               href="#join"
-              className={`px-4 py-2 rounded-lg transition-colors ${navbarBackground
-                ? "bg-white text-black hover:bg-gray-100"
-                : "bg-black text-white hover:bg-gray-800"
-                }`}
+              className="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors"
             >
               Join Us
             </a>
@@ -245,14 +258,9 @@ export default function Home() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`hover:text-primary focus:outline-none ${navbarBackground ? "text-white" : "text-gray-800"
-                }`}
+              className="hover:text-blue-400 focus:outline-none text-white"
             >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -558,19 +566,19 @@ export default function Home() {
                   <div className="flex justify-center space-x-4">
                     <a
                       href={member.social.Instagram}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-muted-foreground hover:text-blue-400 transition-colors"
                     >
                       <Instagram className="h-5 w-5" />
                     </a>
                     <a
                       href={member.social.linkedin}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-muted-foreground hover:text-blue-400 transition-colors"
                     >
                       <Linkedin className="h-5 w-5" />
                     </a>
                     <a
                       href={member.social.github}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-muted-foreground hover:text-blue-400 transition-colors"
                     >
                       <Github className="h-5 w-5" />
                     </a>
@@ -635,19 +643,19 @@ export default function Home() {
               <div className="flex space-x-4">
                 <a
                   href="https://www.instagram.com/driveorbit.lk/"
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  className="text-gray-600 hover:text-blue-400 transition-colors"
                 >
                   <Instagram className="h-5 w-5" />
                 </a>
                 <a
                   href="https://www.linkedin.com/company/driveorbit-lk/"
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  className="text-gray-600 hover:text-blue-400 transition-colors"
                 >
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a
                   href="https://github.com/DriveOrbit"
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  className="text-gray-600 hover:text-blue-400 transition-colors"
                 >
                   <Github className="h-5 w-5" />
                 </a>
