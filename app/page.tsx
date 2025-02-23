@@ -390,7 +390,7 @@ export default function Home() {
               >
                 <SwiperSlide>
                   <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_195845-removebg-preview.png?raw=true"
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_195845-removebg-preview.png?raw=true"
                     alt="App Mockup 1"
                     className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
                     whileHover={{ scale: 1.05 }}
@@ -399,7 +399,7 @@ export default function Home() {
                 </SwiperSlide>
                 <SwiperSlide>
                   <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_195907-removebg-preview.png?raw=true"
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_195907-removebg-preview.png?raw=true"
                     alt="App Mockup 2"
                     className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
                     whileHover={{ scale: 1.05 }}
@@ -408,7 +408,7 @@ export default function Home() {
                 </SwiperSlide>
                 <SwiperSlide>
                   <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_195919-removebg-preview.png?raw=true"
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_195919-removebg-preview.png?raw=true"
                     alt="App Mockup 3"
                     className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
                     whileHover={{ scale: 1.05 }}
@@ -417,7 +417,7 @@ export default function Home() {
                 </SwiperSlide>
                 <SwiperSlide>
                   <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_195954-removebg-preview.png?raw=true"
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_195954-removebg-preview.png?raw=true"
                     alt="App Mockup 4"
                     className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
                     whileHover={{ scale: 1.05 }}
@@ -426,7 +426,7 @@ export default function Home() {
                 </SwiperSlide>
                 <SwiperSlide>
                   <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_200004-removebg-preview.png?raw=true"
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_200004-removebg-preview.png?raw=true"
                     alt="App Mockup 5"
                     className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
                     whileHover={{ scale: 1.05 }}
@@ -435,7 +435,7 @@ export default function Home() {
                 </SwiperSlide>
                 <SwiperSlide>
                   <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/optimize/media/Screenshot_2025-02-23_200025-removebg-preview.png?raw=true"
+                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_200025-removebg-preview.png?raw=true"
                     alt="App Mockup 6"
                     className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
                     whileHover={{ scale: 1.05 }}
