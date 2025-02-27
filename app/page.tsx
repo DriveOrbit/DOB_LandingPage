@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-creative";
+import { TbBrandTiktok } from "react-icons/tb"; // TikTok icon from react-icons
 import Link from "next/link";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
@@ -28,8 +29,8 @@ import {
   Instagram,
   Menu,
   X,
-  Facebook,
 } from "lucide-react";
+
 
 const features = [
   {
@@ -66,7 +67,7 @@ const features = [
   },
   {
     icon: <Fuel className="h-12 w-12" />,
-    title: "FUEL OPTIMIZATION",
+    title: "FUEL EFFICIENCY",
     description:
       "Maximize fuel efficiency across your entire fleet with our intelligent monitoring system. Track consumption patterns, identify inefficiencies, and implement data-driven strategies to reduce fuel costs.",
     image:
@@ -100,6 +101,10 @@ const teamMembers = [
       "Led the Flutter project, gathering and motivating the team to deliver high-quality results. Designed and implemented the mobile app’s driver dashboard and driving history features, ensuring a seamless user experience. Additionally Developed the app’s splash screen.",
     name: "Sachintha Sithuruwan",
     designation: "Full-Stack Developer | UI/UX Designer",
+    role: "Full-Stack Developer | UI/UX Designer",
+    image: "https://avatars.githubusercontent.com/u/160252042?v=4",
+    bio: "Led the Flutter project, gathering and motivating the team to deliver high-quality results. Designed and implemented the mobile app’s driver dashboard and driving history features, ensuring a seamless user experience. Developed the app’s splash screen.",
+
     social: {
             Instagram: "https://www.instagram.com/sachintha_vithanawasam/",
             linkedin: "https://www.linkedin.com/in/sachintha-vithanawasam-6bb9b4287/",
@@ -124,6 +129,9 @@ const teamMembers = [
       "Led the presenting and pitching of the project. Managed the marketing and social media strategies to enhance project visibility and engagement. Additionally, contributed to the Flutter application, ensuring a smooth and visually appealing user experience.",
     name: "Chandeera Wickramasingha",
     designation: "Frontend Developer | Presenter",
+    role: "Frontend Developer | Presenter",
+    image: "https://avatars.githubusercontent.com/u/188667694?v=4",
+    bio: "Led the presenting and pitching of the project. Managed the marketing and social media strategies to enhance project visibility and engagement. Additionally, contributed to the Flutter application, ensuring a smooth and visually appealing user experience.",
     social: {
             Instagram: "https://www.instagram.com/prabathcw/",
             linkedin: "https://www.linkedin.com/in/prabathcw/",
@@ -148,6 +156,10 @@ const teamMembers = [
       "Led documentation and conducted research to enhance system transparency and efficiency. Contributed to the frontend of the mobile app using Flutter, ensuring a seamless user experience. Assisted in backend development to optimize system performance.",
     name: "Duranga Harindi",
     designation: "Full-Stack Developer | Documentation",
+    name: "Duranga Harindi",
+    role: "Full-Stack Developer | Documentation",
+    image: "https://avatars.githubusercontent.com/u/187119991?v=4",
+    bio: "Led documentation and conducted research to enhance system transparency and efficiency. Contributed to the frontend of the mobile app using Flutter, ensuring a seamless user experience. Assisted in backend development to optimize system performance.",
     social: {
             Instagram: "https://www.instagram.com/harindi_88/",
             linkedin: "https://www.linkedin.com/in/durangaharindi/",
@@ -196,8 +208,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Scroll Indicator */}
+<div className="min-h-screen bg-gradient-to-r from-blue-50 to-purple-50">
+        {/* Scroll Indicator */}
       <div className="fixed top-0 left-0 right-0 h-1 z-40 bg-gray-700">
         <motion.div
           className="h-full bg-primary"
@@ -209,104 +221,123 @@ export default function Home() {
       </div>
 
       {/* Navbar */}
-      <motion.nav
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showNavbar ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 backdrop-blur-md ${navbarBackground
-          ? "bg-black/30 text-white shadow-md" // When scrolled: reduced opacity and blur
-          : "bg-transparent text-white" // When at top: transparent background
-          }`}
-      >
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img
-              src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
-              alt="DriveOrbit Logo"
-              className="h-10"
-            />
-            <span className="text-xl font-bold text-white">
-              DriveOrbit
-            </span>
-          </div>
+<motion.nav
+  initial={{ opacity: 0 }}
+  animate={{ opacity: showNavbar ? 1 : 0 }}
+  transition={{ duration: 0.3 }}
+  className={`navbar-container fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+    navbarBackground
+      ? "bg-black/30 text-white shadow-md"
+      : "bg-transparent text-white"
+  }`}
+>
+  <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    {/* Logo - Hidden when mobile menu is open */}
+    <div className={`flex items-center space-x-2 ${isMobileMenuOpen ? "md:flex hidden" : "flex"}`}>
+      <img
+        src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
+        alt="DriveOrbit Logo"
+        className="h-10 w-auto"
+      />
+      <span className="text-xl font-bold">DriveOrbit</span>
+    </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8 text-sm font-medium items-center">
-            <a
-              href="#about"
-              className="relative hover:text-blue-400 transition-colors group"
-            >
-              About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a
-              href="#features"
-              className="relative hover:text-blue-400 transition-colors group"
-            >
-              Features
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a
-              href="#team"
-              className="relative hover:text-blue-400 transition-colors group"
-            >
-              Team
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a
-              href="#join"
-              className="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors"
-            >
-              Join Us
-            </a>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="hover:text-blue-400 focus:outline-none text-white"
-            >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        <div
-          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-            } md:hidden`}
+    {/* Desktop Menu */}
+    <div className="hidden md:flex items-center space-x-8">
+      {['about', 'features', 'team'].map((item) => (
+        <a
+          key={item}
+          href={`#${item}`}
+          className="relative group px-3 py-2 transition-all duration-300"
         >
-          <div className="flex justify-end p-4">
-            <button onClick={() => setIsMobileMenuOpen(false)}>
-              <X className="h-6 w-6" />
-            </button>
-          </div>
-          <ul className="flex flex-col space-y-4 p-4">
-            <li>
-              <a href="#about" className="hover:underline">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#features" className="hover:underline">
-                Features
-              </a>
-            </li>
-            <li>
-              <a href="#team" className="hover:underline">
-                Team
-              </a>
-            </li>
-            <li>
-              <a href="#join" className="hover:underline">
-                Join Us
-              </a>
-            </li>
-          </ul>
-        </div>
-      </motion.nav>
+          <span className="capitalize">{item}</span>
+          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] transition-all duration-300 group-hover:w-full" />
+        </a>
+      ))}
+      <a
+  href="#join"
+  className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] text-white hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 transition-all shadow-lg hover:scale-105"
+>
+  Join Us
+</a>
+    </div>
+
+    {/* Mobile Menu Toggle */}
+    <div className="md:hidden">
+      <button
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+      >
+        {isMobileMenuOpen ? (
+          <X className="h-6 w-6" />
+        ) : (
+          <Menu className="h-6 w-6" />
+        )}
+      </button>
+    </div>
+  </div>
+
+  {/* Mobile Menu Overlay */}
+  {isMobileMenuOpen && (
+    <div
+      className="fixed inset-0 bg-100 z-40 md:hidden"
+      onClick={() => setIsMobileMenuOpen(false)}
+    />
+  )}
+
+  {/* Mobile Menu Content */}
+  <motion.div
+    initial={{ x: '-100%' }}
+    animate={{ x: isMobileMenuOpen ? 0 : '-100%' }}
+    transition={{ type: 'tween' }}
+    className="fixed top-0 left-0 h-full w-64 bg-black/30 backdrop-blur-md shadow-xl z-50 md:hidden"
+  >
+    {/* Mobile menu header with logo */}
+    <div className="p-4 border-b border-white/10 flex justify-between items-center">
+    <div className="navbar-logo flex items-center space-x-2">
+  <img
+    src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
+    alt="DriveOrbit Logo"
+    className="h-10 w-auto"
+  />
+  <span className="text-xl font-bold">DriveOrbit</span>
+</div>
+      <button
+        onClick={() => setIsMobileMenuOpen(false)}
+        className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+      >
+        <X className="h-6 w-6 text-white" />
+      </button>
+    </div>
+    
+    {/* Mobile menu items */}
+    <div className="p-4 flex flex-col h-[calc(100vh-80px)]">
+      <div className="space-y-2 flex-1">
+        {['about', 'features', 'team'].map((item) => (
+          <a
+            key={item}
+            href={`#${item}`}
+            className="block px-4 py-3 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <span className="capitalize">{item}</span>
+          </a>
+        ))}
+      </div>
+      
+      {/* Join Us button */}
+      <div className="border-t border-white/10 pt-4">
+        <a
+          href="#join"
+          className="block w-full px-4 py-3 rounded-lg bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] text-white hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 transition-all text-center"
+        >
+          Join Us
+        </a>
+      </div>
+    </div>
+  </motion.div>
+</motion.nav>
+
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -371,8 +402,7 @@ export default function Home() {
                 About DriveOrbit
               </h2>
               <p className="text-lg md:text-xl text-gray-300 mb-8">
-                DriveOrbit is a smart fleet management solution designed to optimize vehicle usage, enhance security, and improve operational efficiency. Our platform empowers businesses with real-time tracking, driver monitoring, and automated insights to reduce misuse and maximize productivity. By leveraging cutting-edge technology, DriveOrbit ensures seamless fleet operations, helping organizations manage their vehicles smarter and safer.
-              </p>
+              DriveOrbit is a smart fleet management solution designed to reduce unauthorized vehicle usage, enhance security, and improve operational efficiency. Our platform empowers businesses with real-time tracking, driver monitoring, and automated insights to reduce misuse and maximize productivity. By leveraging cutting-edge technology, DriveOrbit ensures seamless fleet operations, helping organizations manage their vehicles smarter and safer.              </p>
               <Button
                 size="lg"
                 className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
@@ -475,62 +505,64 @@ export default function Home() {
 
       {/* Features Section */}
       <section id="features" className="relative py-24 bg-gray-200">
-        {/* White Overlay at the Bottom */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
-        <div className="container mx-auto px-4 relative z-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Powerful Features for Modern Fleet Management
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to manage your fleet efficiently and safely in one integrated platform.
-            </p>
-          </motion.div>
-          <div className="space-y-24">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                  } items-center gap-12`}
-              >
-                {/* Feature Image */}
-                <div className="w-full lg:w-1/2">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-3xl" />
-                    <img
-                      src={feature.image}
-                      alt={feature.title}
-                      className="w-full h-[400px] object-cover rounded-3xl"
-                    />
-                  </div>
-                </div>
-                {/* Feature Text */}
-                <div className="w-full lg:w-1/2 space-y-6">
-                  <div className="inline-block p-3 bg-primary/10 rounded-2xl text-primary">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
-                    {feature.title}
-                  </h3>
-                  <p className="text-lg text-muted-foreground">
-                    {feature.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+  {/* White Overlay at the Bottom */}
+  <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
+  <div className="container mx-auto px-4 relative z-20">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        Powerful Features for Modern Fleet Management
+      </h2>
+      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        Everything you need to manage your fleet efficiently and safely in one integrated platform.
+      </p>
+    </motion.div>
+    <div className="space-y-24">
+      {features.map((feature, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: index * 0.1 }}
+          className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+            } items-center gap-12`}
+        >
+          {/* Feature Image */}
+          <div className="w-full lg:w-1/2">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-3xl" />
+              <img
+                src={feature.image}
+                alt={feature.title}
+                className="w-full h-[400px] object-cover rounded-3xl"
+              />
+            </div>
           </div>
-        </div>
-      </section>
+          {/* Feature Text */}
+          <div className="w-full lg:w-1/2 space-y-6">
+            <div className="flex items-center space-x-4">
+              <div className="p-3 bg-primary/10 rounded-2xl text-primary">
+                {feature.icon}
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
+                {feature.title}
+              </h3>
+            </div>
+            <p className="text-lg text-muted-foreground">
+              {feature.description}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Team Members Section */}
       <section id="team" className="py-24 bg-muted/50">
@@ -596,9 +628,9 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">About</h4>
               <div className="mt-4">
-                <p className="text-sm text-gray-600"><b>Tel:</b> 123-456-7890</p>
-                <p className="text-sm text-gray-600"><b>Email:</b> driveorbitsocial@gmail.com</p>
-                <p className="text-sm text-gray-600"><b>Address:</b> 123, Chandeera road, Divulapitiya.</p>
+                <p className="text-sm text-gray-600"><b>Tel:</b> +94 70 194 2405</p>
+                <p className="text-sm text-gray-600"><b>Email:</b> info@driveorbit.pro</p>
+                <p className="text-sm text-gray-600"><b>Address:</b> 32/7, Sri Sobitha Mawatha, Wadduwa.</p>
               </div>
             </div>
 
@@ -606,9 +638,10 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Connect</h4>
               <div className="flex space-x-4">
+              
                 <a
                   href="https://www.instagram.com/driveorbit.lk/"
-                  className="text-gray-600 hover:text-blue-400 transition-colors"
+                  className="text-gray-600 hover:text-primary transition-colors"
                 >
                   <Instagram className="h-5 w-5" />
                 </a>
@@ -623,6 +656,12 @@ export default function Home() {
                   className="text-gray-600 hover:text-blue-400 transition-colors"
                 >
                   <Github className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@driveorbit"
+                  className="text-gray-600 hover:text-blue-400 transition-colors"
+                >
+                  <TbBrandTiktok className="h-5 w-5" />
                 </a>
               </div>
             </div>
