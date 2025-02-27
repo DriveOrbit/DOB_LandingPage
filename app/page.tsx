@@ -584,6 +584,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
       {/* Footer */}
       <footer className="py-12 bg-gray-100">
         <div className="container mx-auto px-4">
