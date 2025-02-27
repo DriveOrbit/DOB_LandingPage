@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,6 +9,20 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { TbBrandTiktok } from "react-icons/tb"; // TikTok icon from react-icons
+import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+import { motion } from "framer-motion";
+import { BackgroundBeams } from "@/components/ui/background-beams"; // Import the BackgroundBeams component
+
+
 
 import {
   Car,
@@ -96,7 +109,7 @@ const teamMembers = [
     name: "Sachintha Sithuruwan",
     role: "Full-Stack Developer | UI/UX Designer",
     image: "https://avatars.githubusercontent.com/u/160252042?v=4",
-    bio: "Led the Flutter project, gathering and motivating the team to deliver high-quality results. Designed and implemented the mobile app’s driver dashboard and driving history features, ensuring a seamless user experience.",
+    bio: "Led the Flutter project, gathering and motivating the team to deliver high-quality results. Designed and implemented the mobile app’s driver dashboard and driving history features, ensuring a seamless user experience. Developed the app’s splash screen.",
     social: {
       Instagram: "https://www.instagram.com/sachintha_vithanawasam/",
       linkedin:
@@ -119,7 +132,7 @@ const teamMembers = [
     name: "Chandeera Wickramasingha",
     role: "Frontend Developer | Presenter",
     image: "https://avatars.githubusercontent.com/u/188667694?v=4",
-    bio: "Led the presenting and pitching of the project.",
+    bio: "Led the presenting and pitching of the project. Managed the marketing and social media strategies to enhance project visibility and engagement. Additionally, contributed to the Flutter application, ensuring a smooth and visually appealing user experience.",
     social: {
       Instagram: "https://www.instagram.com/prabathcw/",
       linkedin: "https://www.linkedin.com/in/prabathcw/",
@@ -138,10 +151,10 @@ const teamMembers = [
     },
   },
   {
-    name: "Duranga Harindi | Documentation",
-    role: "Full-Stack Developer",
+    name: "Duranga Harindi",
+    role: "Full-Stack Developer | Documentation",
     image: "https://avatars.githubusercontent.com/u/187119991?v=4",
-    bio: "Led documentation efforts and conducted in-depth research to enhance system transparency and efficiency. Contributed to the frontend of the mobile app using Flutter, ensuring a seamless user experience. Assisted in backend development to optimize system performance.",
+    bio: "Led documentation and conducted research to enhance system transparency and efficiency. Contributed to the frontend of the mobile app using Flutter, ensuring a seamless user experience. Assisted in backend development to optimize system performance.",
     social: {
       Instagram: "https://www.instagram.com/harindi_88/",
       linkedin: "https://www.linkedin.com/in/durangaharindi/",
@@ -157,6 +170,12 @@ export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-in-out',
+      offset: 120,
+    });
     let lastScrollY = window.scrollY;
 
     const handleScroll = () => {
@@ -320,50 +339,35 @@ export default function Home() {
 </motion.nav>
 
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
-        <video
-          autoPlay
-          muted
-          loop
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source
-            src="https://cdn.pixabay.com/video/2018/11/29/19627-304735769_tiny.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
+{/* Hero Section */}
+<section className="relative h-screen flex items-center justify-center overflow-hidden bg-neutral-950">
+  {/* Background Beams */}
+  <BackgroundBeams />
 
-        {/* Overlay to darken the video background */}
-        <div className="absolute inset-0 bg-black/50 z-0"></div>
-
-        {/* Black Linear Overlay at the bottom */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-10"></div>
-
-        <div className="container mx-auto px-4 z-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-              DriveOrbit – Smarter Fleet Management for a Safer Future
-            </h1>
-            <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
-              Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
-            </p>
-            <Button
-              size="lg"
-              className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
-            >
-              Request a Demo <ChevronRight className="ml-2" />
-            </Button>
-          </motion.div>
-        </div>
-      </section>
+  {/* Content */}
+  <div className="container mx-auto px-4 relative z-20">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2 }}
+      className="text-center"
+    >
+      <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600">
+        DriveOrbit – Smarter Fleet Management for a Safer Future
+      </h1>
+      {/* <p className="text-xl md:text-2xl text-neutral-300 mb-8 max-w-3xl mx-auto relative z-10"> */}
+      <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
+        Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
+      </p>
+      <Button
+        size="lg"
+        className="text-lg px-8 py-6 bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 text-white"
+      >
+        Request a Demo <ChevronRight className="ml-2" />
+      </Button>
+    </motion.div>
+  </div>
+</section>
 
       {/* About Section */}
       <section id="about" className="relative h-screen flex items-center justify-center bg-black">
@@ -507,6 +511,7 @@ export default function Home() {
       {features.map((feature, index) => (
         <motion.div
           key={index}
+          data-aos="fade-up" // Add this
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -566,6 +571,7 @@ export default function Home() {
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
+                data-aos="flip-left" // Add this
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -614,25 +620,27 @@ export default function Home() {
       {/* CTA / Join Section */}
       <section id="join" className="py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
+        <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="text-center"
+  data-aos="zoom-in" // Add this
+  data-aos-delay="200"
+>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Start Managing Your Fleet Today!
             </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
               Join thousands of fleet managers who trust DriveOrbit for their operations
             </p>
-            <Button
-  size="lg"
-  className="text-lg px-8 py-6 bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 text-white"
->
-  Get Started Now <ChevronRight className="ml-2" />
-</Button>
+            <Link href="/form">
+              <Button size="lg" variant="secondary"  className="text-lg px-8 py-6 bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 text-white"
+              >
+                Get Started Now <ChevronRight className="ml-2" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>
