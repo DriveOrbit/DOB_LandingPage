@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { TbBrandTiktok } from "react-icons/tb"; // TikTok icon from react-icons
+import Link from "next/link";
 
 import {
   Car,
@@ -96,7 +97,7 @@ const teamMembers = [
     name: "Sachintha Sithuruwan",
     role: "Full-Stack Developer | UI/UX Designer",
     image: "https://avatars.githubusercontent.com/u/160252042?v=4",
-    bio: "Led the Flutter project, gathering and motivating the team to deliver high-quality results. Designed and implemented the mobile app’s driver dashboard and driving history features, ensuring a seamless user experience.",
+    bio: "Led the Flutter project, gathering and motivating the team to deliver high-quality results. Designed and implemented the mobile app’s driver dashboard and driving history features, ensuring a seamless user experience. Developed the app’s splash screen.",
     social: {
       Instagram: "https://www.instagram.com/sachintha_vithanawasam/",
       linkedin:
@@ -119,7 +120,7 @@ const teamMembers = [
     name: "Chandeera Wickramasingha",
     role: "Frontend Developer | Presenter",
     image: "https://avatars.githubusercontent.com/u/188667694?v=4",
-    bio: "Led the presenting and pitching of the project.",
+    bio: "Led the presenting and pitching of the project. Managed the marketing and social media strategies to enhance project visibility and engagement. Additionally, contributed to the Flutter application, ensuring a smooth and visually appealing user experience.",
     social: {
       Instagram: "https://www.instagram.com/prabathcw/",
       linkedin: "https://www.linkedin.com/in/prabathcw/",
@@ -138,10 +139,10 @@ const teamMembers = [
     },
   },
   {
-    name: "Duranga Harindi | Documentation",
-    role: "Full-Stack Developer",
+    name: "Duranga Harindi",
+    role: "Full-Stack Developer | Documentation",
     image: "https://avatars.githubusercontent.com/u/187119991?v=4",
-    bio: "Led documentation efforts and conducted in-depth research to enhance system transparency and efficiency. Contributed to the frontend of the mobile app using Flutter, ensuring a seamless user experience. Assisted in backend development to optimize system performance.",
+    bio: "Led documentation and conducted research to enhance system transparency and efficiency. Contributed to the frontend of the mobile app using Flutter, ensuring a seamless user experience. Assisted in backend development to optimize system performance.",
     social: {
       Instagram: "https://www.instagram.com/harindi_88/",
       linkedin: "https://www.linkedin.com/in/durangaharindi/",
@@ -627,12 +628,11 @@ export default function Home() {
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
               Join thousands of fleet managers who trust DriveOrbit for their operations
             </p>
-            <Button
-  size="lg"
-  className="text-lg px-8 py-6 bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 text-white"
->
-  Get Started Now <ChevronRight className="ml-2" />
-</Button>
+            <Link href="/form">
+              <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
+                Get Started Now <ChevronRight className="ml-2" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>
