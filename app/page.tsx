@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation, EffectCoverflow } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "swiper/css/effect-creative";
-import { TbBrandTiktok } from "react-icons/tb"; // TikTok icon from react-icons
+import { TbBrandTiktok } from "react-icons/tb";
 import Link from "next/link";
-import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+
 
 import {
   Car,
@@ -30,6 +30,8 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+
 
 
 const features = [
@@ -85,86 +87,88 @@ const features = [
 
 const teamMembers = [
   {
-    quote:
-      "Led the Project, ensuring seamless coordination and technical execution. Contributed to both frontend and backend. Managed project workflows, audited team contributions, and guided the team toward creating an innovative vehicle management solution.",
     name: "Senuka Fernando",
-    designation: "Team Lead | Full-Stack Developer",
+    role: "Team Lead | Full-Stack Developer",
+    image: "https://avatars.githubusercontent.com/u/122157771?v=4",
+    bio: "Led the Project, ensuring seamless coordination and technical execution. Contributed to the both frontend and backend. Managed project workflows, audited team contributions, and guided the team toward creating an innovative vehicle management solution.",
     social: {
-            Instagram: "https://www.instagram.com/senuka.f/",
-            linkedin: "https://www.linkedin.com/in/senuka-fernando/",
-            github: "https://github.com/senukafer12",
-          },
-    src: "https://avatars.githubusercontent.com/u/122157771?v=4",
+      Instagram: "https://www.instagram.com/senuka.f/",
+      linkedin: "https://www.linkedin.com/in/senuka-fernando/",
+      github: "https://github.com/senukafer12",
+    },
+    quote: "DriveOrbit is a game-changer in fleet management.",
+    designation: "Team Lead",
+    src: "https://avatars.githubusercontent.com/u/122157771?v=4", // Add src property
   },
   {
-    quote:
-      "Led the Flutter project, gathering and motivating the team to deliver high-quality results. Designed and implemented the mobile app’s driver dashboard and driving history features, ensuring a seamless user experience. Additionally Developed the app’s splash screen.",
     name: "Sachintha Sithuruwan",
-    designation: "Full-Stack Developer | UI/UX Designer",
     role: "Full-Stack Developer | UI/UX Designer",
     image: "https://avatars.githubusercontent.com/u/160252042?v=4",
     bio: "Led the Flutter project, gathering and motivating the team to deliver high-quality results. Designed and implemented the mobile app’s driver dashboard and driving history features, ensuring a seamless user experience. Developed the app’s splash screen.",
-
     social: {
-            Instagram: "https://www.instagram.com/sachintha_vithanawasam/",
-            linkedin: "https://www.linkedin.com/in/sachintha-vithanawasam-6bb9b4287/",
-            github: "https://github.com/SachiVithX",
-          },
+      Instagram: "https://www.instagram.com/sachintha_vithanawasam/",
+      linkedin:
+        "https://www.linkedin.com/in/sachintha-vithanawasam-6bb9b4287/",
+      github: "https://github.com/SachiVithX",
+    },
+    quote: "Our UI/UX design ensures a seamless user experience.",
+    designation: "UI/UX Designer",
     src: "https://avatars.githubusercontent.com/u/160252042?v=4",
   },
   {
-    quote:
-      "Manage the project, ensuring seamless collaboration and high-quality execution. Designed the UI/UX, developed the backend, and implemented the mobile application. Managed project workflows, and optimized system performance for efficiency and reliability.",
     name: "Chamikara Kodithuwakku",
-    designation: "Full-Stack Developer | UI/UX Expert",
+    role: "Full-Stack Developer | UI/UX Expert",
+    image: "https://avatars.githubusercontent.com/u/151379703?v=4",
+    bio: "Manage the project, ensuring seamless collaboration and high-quality execution. Designed the UI/UX, developed the backend, and implemented the mobile application. Managed project workflows, and optimized system performance for efficiency and reliability.",
     social: {
-            Instagram: "https://www.instagram.com/cham.i_.xx/",
-            linkedin: "https://www.linkedin.com/in/chamikara-kodithuwakku-5a1532292/",
-            github: "https://github.com/chaxmikara",
-          },
+      Instagram: "https://www.instagram.com/cham.i_.xx/",
+      linkedin: "https://www.linkedin.com/in/chamikara-kodithuwakku-5a1532292/",
+      github: "https://github.com/chaxmikara",
+    },
+    quote: "Optimizing system performance for efficiency and reliability.",
+    designation: "UI/UX Expert",
     src: "https://avatars.githubusercontent.com/u/151379703?v=4",
   },
   {
-    quote:
-      "Led the presenting and pitching of the project. Managed the marketing and social media strategies to enhance project visibility and engagement. Additionally, contributed to the Flutter application, ensuring a smooth and visually appealing user experience.",
     name: "Chandeera Wickramasingha",
-    designation: "Frontend Developer | Presenter",
     role: "Frontend Developer | Presenter",
     image: "https://avatars.githubusercontent.com/u/188667694?v=4",
     bio: "Led the presenting and pitching of the project. Managed the marketing and social media strategies to enhance project visibility and engagement. Additionally, contributed to the Flutter application, ensuring a smooth and visually appealing user experience.",
     social: {
-            Instagram: "https://www.instagram.com/prabathcw/",
-            linkedin: "https://www.linkedin.com/in/prabathcw/",
-            github: "https://github.com/PrabathCW",
-          },
+      Instagram: "https://www.instagram.com/prabathcw/",
+      linkedin: "https://www.linkedin.com/in/prabathcw/",
+      github: "https://github.com/PrabathCW",
+    },
+    quote: "Ensuring a smooth and visually appealing user experience.",
+    designation: "Presenter",
     src: "https://avatars.githubusercontent.com/u/188667694?v=4",
   },
   {
-    quote:
-      "Developed and implemented the UI using Flutter to build a responsive and visually engaging web and mobile application. Optimized performance and ensured a seamless user experience with Flutter’s cross-platform compatibility.",
     name: "Nuhansa De Silva",
-    designation: "Frontend Developer | UI/UX Designer",
+    role: "Frontend Developer | UI/UX Designer",
+    image: "https://avatars.githubusercontent.com/u/160605772?v=4",
+    bio: "Developed and implemented the UI using Flutter to build a responsive and visually engaging web and mobile application. Optimized performance and ensured a seamless user experience with Flutter’s cross-platform compatibility.",
     social: {
-            Instagram: "https://www.instagram.com/nu_desilva/",
-            linkedin: "https://www.linkedin.com/in/nuhansa-de-silva-8516b3273/",
-            github: "https://github.com/NuDeSilva",
-          },
+      Instagram: "https://www.instagram.com/nu_desilva/",
+      linkedin: "https://www.linkedin.com/in/nuhansa-de-silva-8516b3273/",
+      github: "https://github.com/NuDeSilva",
+    },
+    quote: "Building a responsive and visually engaging application.",
+    designation: "UI/UX Designer",
     src: "https://avatars.githubusercontent.com/u/160605772?v=4",
   },
   {
-    quote:
-      "Led documentation and conducted research to enhance system transparency and efficiency. Contributed to the frontend of the mobile app using Flutter, ensuring a seamless user experience. Assisted in backend development to optimize system performance.",
-    name: "Duranga Harindi",
-    designation: "Full-Stack Developer | Documentation",
     name: "Duranga Harindi",
     role: "Full-Stack Developer | Documentation",
     image: "https://avatars.githubusercontent.com/u/187119991?v=4",
     bio: "Led documentation and conducted research to enhance system transparency and efficiency. Contributed to the frontend of the mobile app using Flutter, ensuring a seamless user experience. Assisted in backend development to optimize system performance.",
     social: {
-            Instagram: "https://www.instagram.com/harindi_88/",
-            linkedin: "https://www.linkedin.com/in/durangaharindi/",
-            github: "https://github.com/Harindi02",
-          },
+      Instagram: "https://www.instagram.com/harindi_88/",
+      linkedin: "https://www.linkedin.com/in/durangaharindi/",
+      github: "https://github.com/Harindi02",
+    },
+    quote: "Enhancing system transparency and efficiency.",
+    designation: "Documentation",
     src: "https://avatars.githubusercontent.com/u/187119991?v=4",
   },
 ];
@@ -208,8 +212,8 @@ export default function Home() {
   }, []);
 
   return (
-<div className="min-h-screen bg-gradient-to-r from-blue-50 to-purple-50">
-        {/* Scroll Indicator */}
+    <div className="min-h-screen bg-gradient-to-r from-blue-50 to-purple-50">
+      {/* Scroll Indicator */}
       <div className="fixed top-0 left-0 right-0 h-1 z-40 bg-gray-700">
         <motion.div
           className="h-full bg-primary"
@@ -221,169 +225,168 @@ export default function Home() {
       </div>
 
       {/* Navbar */}
-<motion.nav
-  initial={{ opacity: 0 }}
-  animate={{ opacity: showNavbar ? 1 : 0 }}
-  transition={{ duration: 0.3 }}
-  className={`navbar-container fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-    navbarBackground
-      ? "bg-black/30 text-white shadow-md"
-      : "bg-transparent text-white"
-  }`}
->
-  <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-    {/* Logo - Hidden when mobile menu is open */}
-    <div className={`flex items-center space-x-2 ${isMobileMenuOpen ? "md:flex hidden" : "flex"}`}>
-      <img
-        src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
-        alt="DriveOrbit Logo"
-        className="h-10 w-auto"
-      />
-      <span className="text-xl font-bold">DriveOrbit</span>
-    </div>
-
-    {/* Desktop Menu */}
-    <div className="hidden md:flex items-center space-x-8">
-      {['about', 'features', 'team'].map((item) => (
-        <a
-          key={item}
-          href={`#${item}`}
-          className="relative group px-3 py-2 transition-all duration-300"
-        >
-          <span className="capitalize">{item}</span>
-          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] transition-all duration-300 group-hover:w-full" />
-        </a>
-      ))}
-      <a
-  href="#join"
-  className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] text-white hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 transition-all shadow-lg hover:scale-105"
->
-  Join Us
-</a>
-    </div>
-
-    {/* Mobile Menu Toggle */}
-    <div className="md:hidden">
-      <button
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showNavbar ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`navbar-container fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${navbarBackground
+          ? "bg-black/30 text-white shadow-md"
+          : "bg-transparent text-white"
+          }`}
       >
-        {isMobileMenuOpen ? (
-          <X className="h-6 w-6" />
-        ) : (
-          <Menu className="h-6 w-6" />
-        )}
-      </button>
-    </div>
-  </div>
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          {/* Logo - Hidden when mobile menu is open */}
+          <div className={`flex items-center space-x-2 ${isMobileMenuOpen ? "md:flex hidden" : "flex"}`}>
+            <img
+              src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
+              alt="DriveOrbit Logo"
+              className="h-10 w-auto"
+            />
+            <span className="text-xl font-bold">DriveOrbit</span>
+          </div>
 
-  {/* Mobile Menu Overlay */}
-  {isMobileMenuOpen && (
-    <div
-      className="fixed inset-0 bg-100 z-40 md:hidden"
-      onClick={() => setIsMobileMenuOpen(false)}
-    />
-  )}
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            {['about', 'features', 'team'].map((item) => (
+              <a
+                key={item}
+                href={`#${item}`}
+                className="relative group px-3 py-2 transition-all duration-300"
+              >
+                <span className="capitalize">{item}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
+            <a
+              href="#join"
+              className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] text-white hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 transition-all shadow-lg hover:scale-105"
+            >
+              Join Us
+            </a>
+          </div>
 
-  {/* Mobile Menu Content */}
-  <motion.div
-    initial={{ x: '-100%' }}
-    animate={{ x: isMobileMenuOpen ? 0 : '-100%' }}
-    transition={{ type: 'tween' }}
-    className="fixed top-0 left-0 h-full w-64 bg-black/30 backdrop-blur-md shadow-xl z-50 md:hidden"
-  >
-    {/* Mobile menu header with logo */}
-    <div className="p-4 border-b border-white/10 flex justify-between items-center">
-    <div className="navbar-logo flex items-center space-x-2">
-  <img
-    src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
-    alt="DriveOrbit Logo"
-    className="h-10 w-auto"
-  />
-  <span className="text-xl font-bold">DriveOrbit</span>
-</div>
-      <button
-        onClick={() => setIsMobileMenuOpen(false)}
-        className="p-2 rounded-lg hover:bg-white/10 transition-colors"
-      >
-        <X className="h-6 w-6 text-white" />
-      </button>
-    </div>
-    
-    {/* Mobile menu items */}
-    <div className="p-4 flex flex-col h-[calc(100vh-80px)]">
-      <div className="space-y-2 flex-1">
-        {['about', 'features', 'team'].map((item) => (
-          <a
-            key={item}
-            href={`#${item}`}
-            className="block px-4 py-3 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+          {/* Mobile Menu Toggle */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div
+            className="fixed inset-0 bg-100 z-40 md:hidden"
             onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <span className="capitalize">{item}</span>
-          </a>
-        ))}
-      </div>
-      
-      {/* Join Us button */}
-      <div className="border-t border-white/10 pt-4">
-        <a
-          href="#join"
-          className="block w-full px-4 py-3 rounded-lg bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] text-white hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 transition-all text-center"
+          />
+        )}
+
+        {/* Mobile Menu Content */}
+        <motion.div
+          initial={{ x: '-100%' }}
+          animate={{ x: isMobileMenuOpen ? 0 : '-100%' }}
+          transition={{ type: 'tween' }}
+          className="fixed top-0 left-0 h-full w-64 bg-black/30 backdrop-blur-md shadow-xl z-50 md:hidden"
         >
-          Join Us
-        </a>
-      </div>
-    </div>
-  </motion.div>
-</motion.nav>
+          {/* Mobile menu header with logo */}
+          <div className="p-4 border-b border-white/10 flex justify-between items-center">
+            <div className="navbar-logo flex items-center space-x-2">
+              <img
+                src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
+                alt="DriveOrbit Logo"
+                className="h-10 w-auto"
+              />
+              <span className="text-xl font-bold">DriveOrbit</span>
+            </div>
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+            >
+              <X className="h-6 w-6 text-white" />
+            </button>
+          </div>
+
+          {/* Mobile menu items */}
+          <div className="p-4 flex flex-col h-[calc(100vh-80px)]">
+            <div className="space-y-2 flex-1">
+              {['about', 'features', 'team'].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item}`}
+                  className="block px-4 py-3 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span className="capitalize">{item}</span>
+                </a>
+              ))}
+            </div>
+
+            {/* Join Us button */}
+            <div className="border-t border-white/10 pt-4">
+              <a
+                href="#join"
+                className="block w-full px-4 py-3 rounded-lg bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] text-white hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 transition-all text-center"
+              >
+                Join Us
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </motion.nav>
 
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
-        <video
-          autoPlay
-          muted
-          loop
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source
-            src="https://cdn.pixabay.com/video/2018/11/29/19627-304735769_tiny.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-neutral-950">
+        {/* Background Beams */}
+        <BackgroundBeams />
 
-        {/* Overlay to darken the video background */}
-        <div className="absolute inset-0 bg-black/50 z-0"></div>
-
-        {/* Black Linear Overlay at the bottom */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-10"></div>
-
-        <div className="container mx-auto px-4 z-20">
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600">
               DriveOrbit – Smarter Fleet Management for a Safer Future
             </h1>
-            <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
+            {/* <p className="text-xl md:text-2xl text-neutral-300 mb-8 max-w-3xl mx-auto relative z-10"> */}
+            <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
               Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
             </p>
-            <Button
-              size="lg"
-              className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
-            >
-              Request a Demo <ChevronRight className="ml-2" />
-            </Button>
+            <button className="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-neutral-700 py-1 pl-6 pr-14 font-medium text-white">
+              <span className="z-10 pr-2">Request a Demo</span>
+              <div className="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] transition-[width] group-hover:w-[calc(100%-8px)]">
+                <div className="mr-3.5 flex items-center justify-center">
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 text-neutral-50"
+                  >
+                    <path
+                      d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                      fill="currentColor"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </button>
           </motion.div>
         </div>
       </section>
-
       {/* About Section */}
       <section id="about" className="relative h-screen flex items-center justify-center bg-black">
         {/* Gradient Overlay */}
@@ -526,6 +529,7 @@ export default function Home() {
       {features.map((feature, index) => (
         <motion.div
           key={index}
+          data-aos="fade-up" // Add this
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -582,8 +586,8 @@ export default function Home() {
             </p>
           </motion.div>
 
-           {/* Use the AnimatedTestimonials Component */}
-            <AnimatedTestimonials testimonials={teamMembers} autoplay={true} />
+          {/* Use the AnimatedTestimonials Component */}
+          <AnimatedTestimonials testimonials={teamMembers} autoplay={true} />
         </div>
       </section>
 
@@ -638,7 +642,7 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Connect</h4>
               <div className="flex space-x-4">
-              
+
                 <a
                   href="https://www.instagram.com/driveorbit.lk/"
                   className="text-gray-600 hover:text-primary transition-colors"
