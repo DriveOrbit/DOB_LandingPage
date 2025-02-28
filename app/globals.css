@@ -80,39 +80,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-/* Custom Swiper Styles */
-.swiper {
-  width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px;
-  height: auto;
-}
-
-.swiper-slide-shadow-left,
-.swiper-slide-shadow-right {
-  background-image: linear-gradient(
-    to left,
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0)
-  ) !important;
-}
-
-.swiper-pagination-bullet {
-  background-color: #ccc !important;
-}
-
-.swiper-pagination-bullet-active {
-  background-color: #fff !important;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  color: #fff !important;
-}
