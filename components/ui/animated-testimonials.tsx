@@ -154,7 +154,7 @@ export const AnimatedTestimonials = ({
             <div className="flex space-x-4 mt-6">
               {testimonials[active].social?.Instagram && (
                 <a
-                  href={testimonials[active].social.Instagram}
+                  href={testimonials[active].social.Instagram || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-500 hover:text-blue-400 transition-colors"
@@ -164,7 +164,7 @@ export const AnimatedTestimonials = ({
               )}
               {testimonials[active].social?.linkedin && (
                 <a
-                  href={testimonials[active].social.linkedin}
+                  href={testimonials[active].social.linkedin || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-500 hover:text-blue-400 transition-colors"
@@ -174,7 +174,7 @@ export const AnimatedTestimonials = ({
               )}
               {testimonials[active].social?.github && (
                 <a
-                  href={testimonials[active].social.github}
+                  href={testimonials[active].social.github || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-500 hover:text-blue-400 transition-colors"
