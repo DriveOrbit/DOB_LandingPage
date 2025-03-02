@@ -11,6 +11,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Link from "next/link";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 
 import {
   Car,
@@ -154,6 +156,27 @@ const teamMembers = [
       linkedin: "https://www.linkedin.com/in/durangaharindi/",
       github: "https://github.com/Harindi02",
     },
+  },
+];
+
+const teamMembersWords = `Meet the team behind DriveOrbit.`;
+
+const words = [
+  {
+    text: "Start",
+  },
+  {
+    text: "Managing",
+  },
+  {
+    text: "Your",
+  },
+  {
+    text: "Fleet",
+  },
+  {
+    text: "Today!",
+    className: "text-blue-500 dark:text-blue-500",
   },
 ];
 
@@ -533,49 +556,30 @@ export default function Home() {
       </section>
 
       {/* Team Members Section */}
-      <section id="team" className="py-24 bg-muted/50">
+      <section id="team" className="py-12 bg-gray-100 dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Meet the team behind DriveOrbit
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We are a group of passionate Undergraduates dedicated to revolutionizing the Future
-            </p>
-          </motion.div>
+          <div className="text-center">
+            <TextGenerateEffect words={teamMembersWords} className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600" />
+          </div>
           {/* Use the AnimatedTestimonials Component */}
           <AnimatedTestimonials testimonials={teamMembers} autoplay={true} />       
         </div>
       </section>
 
       {/* CTA / Join Section */}
-      <section id="join" className="py-24 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Start Managing Your Fleet Today!
-            </h2>
-            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join thousands of fleet managers who trust DriveOrbit for their operations
-            </p>
+      <section id="join" className="bg-primary text-primary-foreground">
+        <div className="flex flex-col items-center justify-center h-[20rem] md:h-[25rem] lg:h-[30rem]">
+          <p className="text-lg font-normal mt-4 text-white-600 dark:text-white-400">
+            Join thousands of fleet managers who trust DriveOrbit for their operations
+          </p>
+          <TypewriterEffectSmooth words={words} />
+          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
             <Link href="/form">
-              <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
-                Get Started Now <ChevronRight className="ml-2" />
-              </Button>
+              <button className="w-40 h-12 rounded-xl bg-white text-black border border-black  text-sm">
+                Get Started Now 
+              </button>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 
