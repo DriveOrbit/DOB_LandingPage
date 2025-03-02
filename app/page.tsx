@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Link from "next/link";
+import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
 import {
   Car,
@@ -82,10 +83,11 @@ const features = [
 
 const teamMembers = [
   {
+    quote:
+      "Led the Project, ensuring seamless coordination and technical execution. Contributed to both frontend and backend. Managed project workflows, audited team contributions, and guided the team toward creating an innovative vehicle management solution.",
     name: "Senuka Fernando",
-    role: "Team Lead | Full-Stack Developer",
-    image: "https://avatars.githubusercontent.com/u/122157771?v=4",
-    bio: "Led the Project, ensuring seamless coordination and technical execution. Contributed to the both frontend and backend. Managed project workflows, audited team contributions, and guided the team toward creating an innovative vehicle management solution.",
+    designation: "Team Lead | Full-Stack Developer",
+    src: "https://avatars.githubusercontent.com/u/122157771?v=4",
     social: {
       Instagram: "https://www.instagram.com/senuka.f/",
       linkedin: "https://www.linkedin.com/in/senuka-fernando/",
@@ -93,10 +95,11 @@ const teamMembers = [
     },
   },
   {
+    quote:
+      "Led the Flutter project, gathering and motivating the team to deliver high-quality results. Designed and implemented the mobile app’s driver dashboard and driving history features, ensuring a seamless user experience. Developed the app’s splash screen.",
     name: "Sachintha Sithuruwan",
-    role: "Full-Stack Developer | UI/UX Designer",
-    image: "https://avatars.githubusercontent.com/u/160252042?v=4",
-    bio: "Led the Flutter project, gathering and motivating the team to deliver high-quality results. Designed and implemented the mobile app’s driver dashboard and driving history features, ensuring a seamless user experience. Additionally, developed the app’s splash screen.",
+    designation: "Full-Stack Developer | UI/UX Designer",
+    src: "https://avatars.githubusercontent.com/u/160252042?v=4",
     social: {
       Instagram: "https://www.instagram.com/sachintha_vithanawasam/",
       linkedin:
@@ -105,10 +108,11 @@ const teamMembers = [
     },
   },
   {
+    quote:
+      "Manage the project, ensuring seamless collaboration and high-quality execution. Designed the UI/UX, developed the backend, and implemented the mobile application. Managed project workflows, and optimized system performance for efficiency and reliability.",
     name: "Chamikara Kodithuwakku",
-    role: "Full-Stack Developer | UI/UX Expert",
-    image: "https://avatars.githubusercontent.com/u/151379703?v=4",
-    bio: "Manage the project, ensuring seamless collaboration and high-quality execution. Designed the UI/UX, developed the backend, and implemented the mobile application. Managed project workflows, and optimized system performance for efficiency and reliability.",
+    designation: "Full-Stack Developer | UI/UX Expert",
+    src: "https://avatars.githubusercontent.com/u/151379703?v=4",
     social: {
       Instagram: "https://www.instagram.com/cham.i_.xx/",
       linkedin: "https://www.linkedin.com/in/chamikara-kodithuwakku-5a1532292/",
@@ -116,10 +120,11 @@ const teamMembers = [
     },
   },
   {
+    quote:
+      "Led the presenting and pitching of the project. Managed the marketing and social media strategies to enhance project visibility and engagement. Additionally, contributed to the Flutter application, ensuring a smooth and visually appealing user experience.",
     name: "Chandeera Wickramasingha",
-    role: "Frontend Developer | Presenter",
-    image: "https://avatars.githubusercontent.com/u/188667694?v=4",
-    bio: "Led the presenting and pitching of the project.",
+    designation: "Frontend Developer | Presenter",
+    src: "https://avatars.githubusercontent.com/u/188667694?v=4",
     social: {
       Instagram: "https://www.instagram.com/prabathcw/",
       linkedin: "https://www.linkedin.com/in/prabathcw/",
@@ -127,10 +132,11 @@ const teamMembers = [
     },
   },
   {
+    quote:
+      "Developed and implemented the UI using Flutter to build a responsive and visually engaging web and mobile application. Optimized performance and ensured a seamless user experience with Flutter’s cross-platform compatibility.",
     name: "Nuhansa De Silva",
-    role: "Frontend Developer | UI/UX Designer",
-    image: "https://avatars.githubusercontent.com/u/160605772?v=4",
-    bio: "Developed and implemented the UI using Flutter to build a responsive and visually engaging web and mobile application. Optimized performance and ensured a seamless user experience with Flutter’s cross-platform compatibility.",
+    designation: "Frontend Developer | UI/UX Designer",
+    src: "https://avatars.githubusercontent.com/u/160605772?v=4",
     social: {
       Instagram: "https://www.instagram.com/nu_desilva/",
       linkedin: "https://www.linkedin.com/in/nuhansa-de-silva-8516b3273/",
@@ -138,10 +144,11 @@ const teamMembers = [
     },
   },
   {
-    name: "Duranga Harindi | Documentation",
-    role: "Full-Stack Developer",
-    image: "https://avatars.githubusercontent.com/u/187119991?v=4",
-    bio: "Led documentation efforts and conducted in-depth research to enhance system transparency and efficiency. Contributed to the frontend of the mobile app using Flutter, ensuring a seamless user experience. Assisted in backend development to optimize system performance.",
+    quote:
+      "Led documentation and conducted research to enhance system transparency and efficiency. Contributed to the frontend of the mobile app using Flutter, ensuring a seamless user experience. Assisted in backend development to optimize system performance.",
+    name: "Duranga Harindi",
+    designation: "Full-Stack Developer | Documentation",
+    src: "https://avatars.githubusercontent.com/u/187119991?v=4",
     social: {
       Instagram: "https://www.instagram.com/harindi_88/",
       linkedin: "https://www.linkedin.com/in/durangaharindi/",
@@ -542,52 +549,8 @@ export default function Home() {
               We are a group of passionate Undergraduates dedicated to revolutionizing the Future
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 group">
-                  <div className="relative mx-auto mb-6">
-                    <div className="w-32 h-32 mx-auto rounded-full overflow-hidden">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                  <p className="text-sm text-primary mb-4">{member.role}</p>
-                  <p className="text-muted-foreground mb-6">{member.bio}</p>
-                  <div className="flex justify-center space-x-4">
-                    <a
-                      href={member.social.Instagram}
-                      className="text-muted-foreground hover:text-blue-400 transition-colors"
-                    >
-                      <Instagram className="h-5 w-5" />
-                    </a>
-                    <a
-                      href={member.social.linkedin}
-                      className="text-muted-foreground hover:text-blue-400 transition-colors"
-                    >
-                      <Linkedin className="h-5 w-5" />
-                    </a>
-                    <a
-                      href={member.social.github}
-                      className="text-muted-foreground hover:text-blue-400 transition-colors"
-                    >
-                      <Github className="h-5 w-5" />
-                    </a>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          {/* Use the AnimatedTestimonials Component */}
+          <AnimatedTestimonials testimonials={teamMembers} autoplay={true} />       
         </div>
       </section>
 
