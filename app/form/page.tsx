@@ -4,6 +4,16 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import React from "react";
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalTrigger,
+} from "@/components/ui/animated-modal";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function JoinFormPage() {
   const [formData, setFormData] = useState({
@@ -197,10 +207,22 @@ export default function JoinFormPage() {
 
               {/* Submit Button */}
               <div className="flex justify-end">
+                <Modal>
+                  <ModalTrigger className="bg-black dark:bg-white dark:text-black text-white flex justify-center group/modal-btn">
+                    <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
+                      Get on Board
+                    </span>
+                    <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
+                      🚗
+                    </div>
+                  </ModalTrigger>
+                </Modal>
+              </div>
+              {/* <div className="flex justify-end">
                 <Button type="submit" className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90">
                   Get on Board
                 </Button>
-              </div>
+              </div> */}
             </form>
           </>
         )}
