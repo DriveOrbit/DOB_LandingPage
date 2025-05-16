@@ -9,12 +9,15 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "../styles/navbar.css"; // Import custom navbar styles
 import Link from "next/link";
 import { TbBrandTiktok } from "react-icons/tb"; // TikTok icon from react-icons
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import { BackgroundBeams } from "@/components/ui/background-beams"; // Import the BackgroundBeams component
+import LoadingAnimation from "@/components/ui/loading-animation"; // Import the loading animation
+import { AppDetailsModal } from "@/components/ui/app-details-modal"; // Import the app details modal
 
 
 import {
@@ -25,15 +28,11 @@ import {
   QrCode,
   Activity,
   ChevronRight,
-  Github,
-  Twitter,
   Linkedin,
-  ArrowRight,
-  Instagram,
   Menu,
   X,
-  Facebook,
 } from "lucide-react";
+import { FaInstagram, FaGithub } from "react-icons/fa";
 
 const features = [
   {
@@ -184,22 +183,24 @@ const words = [
 ];
 
 export default function Home() {
-  const [showNavbar, setShowNavbar] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [navbarBackground, setNavbarBackground] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [showAppDetails, setShowAppDetails] = useState(false);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500); // 2.5 seconds loading time
 
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setShowNavbar(false);
-      } else {
-        setShowNavbar(true);
-      }
-      lastScrollY = window.scrollY;
-
+      // Set navbar background based on scroll position
       if (window.scrollY > 50) {
         setNavbarBackground(true);
       } else {
@@ -223,6 +224,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Loading Animation */}
+      <LoadingAnimation isLoading={isLoading} />
+
       {/* Scroll Indicator */}
       <div className="fixed top-0 left-0 right-0 h-1 z-40 bg-gray-700">
         <motion.div
@@ -234,172 +238,201 @@ export default function Home() {
         />
       </div>
 
-      {/* Navbar */}
+      {/* Top Navbar */}
       <motion.nav
-  initial={{ opacity: 0 }}
-  animate={{ opacity: showNavbar ? 1 : 0 }}
-  transition={{ duration: 0.3 }}
-  className={`navbar-container fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-    navbarBackground
-      ? "bg-black/30 text-white shadow-md"
-      : "bg-transparent text-white"
-  }`}
->
-  <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-    {/* Logo - Hidden when mobile menu is open */}
-    <div className={`flex items-center space-x-2 ${isMobileMenuOpen ? "md:flex hidden" : "flex"}`}>
-      <img
-        src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
-        alt="DriveOrbit Logo"
-        className="h-10 w-auto"
-      />
-      <span className="text-xl font-bold">DriveOrbit</span>
-    </div>
-
-    {/* Desktop Menu */}
-    <div className="hidden md:flex items-center space-x-8">
-      {['about', 'features', 'team'].map((item) => (
-        <a
-          key={item}
-          href={`#${item}`}
-          className="relative group px-3 py-2 transition-all duration-300"
-        >
-          <span className="capitalize">{item}</span>
-          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] transition-all duration-300 group-hover:w-full" />
-        </a>
-      ))}
-      <a
-  href="#join"
-  className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] text-white hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 transition-all shadow-lg hover:scale-105"
->
-  Join Us
-</a>
-    </div>
-
-    {/* Mobile Menu Toggle */}
-    <div className="md:hidden">
-      <button
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`navbar-container fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navbarBackground
+          ? "bg-black/40 backdrop-blur-md text-white shadow-lg"
+          : "bg-transparent text-white"
+          }`}
       >
-        {isMobileMenuOpen ? (
-          <X className="h-6 w-6" />
-        ) : (
-          <Menu className="h-6 w-6" />
-        )}
-      </button>
-    </div>
-  </div>
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+          {/* Logo with animation */}
+          <div className={`flex items-center space-x-2 ${isMobileMenuOpen ? "md:flex hidden" : "flex"}`}>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center space-x-2"
+            >
+              <img
+                src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
+                alt="DriveOrbit Logo"
+                className="h-10 w-auto rounded-full shadow-md"
+              />
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5]">DriveOrbit</span>
+            </motion.div>
+          </div>
 
-  {/* Mobile Menu Overlay */}
-  {isMobileMenuOpen && (
-    <div
-      className="fixed inset-0 bg-100 z-40 md:hidden"
-      onClick={() => setIsMobileMenuOpen(false)}
-    />
-  )}
+          {/* Desktop Menu with enhanced hover effects */}
+          <div className="hidden md:flex items-center space-x-8">
+            {['about', 'features', 'team'].map((item) => (
+              <motion.a
+                key={item}
+                href={`#${item}`}
+                className="relative group px-3 py-2 transition-all duration-300"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+              >
+                <span className="capitalize font-medium">{item}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] transition-all duration-300 group-hover:w-full" />
+              </motion.a>
+            ))}
+            <motion.a
+              href="#join"
+              className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] text-white hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 transition-all shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Join Us
+            </motion.a>
+          </div>
 
-  {/* Mobile Menu Content */}
-  <motion.div
-    initial={{ x: '-100%' }}
-    animate={{ x: isMobileMenuOpen ? 0 : '-100%' }}
-    transition={{ type: 'tween' }}
-    className="fixed top-0 left-0 h-full w-64 bg-black/30 backdrop-blur-md shadow-xl z-50 md:hidden"
-  >
-    {/* Mobile menu header with logo */}
-    <div className="p-4 border-b border-white/10 flex justify-between items-center">
-    <div className="navbar-logo flex items-center space-x-2">
-  <img
-    src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
-    alt="DriveOrbit Logo"
-    className="h-10 w-auto"
-  />
-  <span className="text-xl font-bold">DriveOrbit</span>
-</div>
-      <button
-        onClick={() => setIsMobileMenuOpen(false)}
-        className="p-2 rounded-lg hover:bg-white/10 transition-colors"
-      >
-        <X className="h-6 w-6 text-white" />
-      </button>
-    </div>
-    
-    {/* Mobile menu items */}
-    <div className="p-4 flex flex-col h-[calc(100vh-80px)]">
-      <div className="space-y-2 flex-1">
-        {['about', 'features', 'team'].map((item) => (
-          <a
-            key={item}
-            href={`#${item}`}
-            className="block px-4 py-3 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
-            onClick={() => setIsMobileMenuOpen(false)}
+          {/* Mobile Menu Toggle with animation */}
+          <motion.div
+            className="md:hidden"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
-            <span className="capitalize">{item}</span>
-          </a>
-        ))}
-      </div>
-      
-      {/* Join Us button */}
-      <div className="border-t border-white/10 pt-4">
-        <a
-          href="#join"
-          className="block w-full px-4 py-3 rounded-lg bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] text-white hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 transition-all text-center"
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </motion.div>
+        </div>
+
+        {/* Mobile Menu Overlay with improved backdrop */}
+        {isMobileMenuOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+
+        {/* Mobile Menu Content with improved animations */}
+        <motion.div
+          initial={{ x: '-100%' }}
+          animate={{ x: isMobileMenuOpen ? 0 : '-100%' }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          className="fixed top-0 left-0 h-full w-72 bg-gradient-to-b from-black/70 to-black/50 backdrop-blur-lg shadow-xl z-50 md:hidden"
         >
-          Join Us
-        </a>
-      </div>
-    </div>
-  </motion.div>
-</motion.nav>
+          {/* Mobile menu header with logo */}
+          <div className="p-4 border-b border-white/10 flex justify-between items-center">
+            <div className="navbar-logo flex items-center space-x-2">
+              <img
+                src="https://avatars.githubusercontent.com/u/188688275?s=400&u=856b48def80550c9fce1c213ecdcb801a41fe0c6&v=4"
+                alt="DriveOrbit Logo"
+                className="h-10 w-auto rounded-full"
+              />
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5]">DriveOrbit</span>
+            </div>
+            <motion.button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+              whileHover={{ rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <X className="h-6 w-6 text-white" />
+            </motion.button>
+          </div>
+
+          {/* Mobile menu items with staggered animation */}
+          <div className="p-4 flex flex-col h-[calc(100vh-80px)]">
+            <div className="space-y-2 flex-1">
+              {['about', 'features', 'team'].map((item, index) => (
+                <motion.a
+                  key={item}
+                  href={`#${item}`}
+                  className="block px-4 py-3 rounded-lg text-white/90 hover:text-white hover:bg-white/10 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ x: 5 }}
+                >
+                  <span className="capitalize font-medium">{item}</span>
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Join Us button with animation */}
+            <motion.div
+              className="border-t border-white/10 pt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <motion.a
+                href="#join"
+                className="block w-full px-4 py-3 rounded-lg bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] text-white hover:from-[#6D6BF8]/90 hover:to-[#54C1D5]/90 transition-all text-center font-medium"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                Join Us
+              </motion.a>
+            </motion.div>
+          </div>
+        </motion.div>
+      </motion.nav>
+
+      {/* Content margin is adjusted via CSS classes instead of styled-jsx */}
 
 
       {/* Hero Section */}
-<section className="relative h-screen flex items-center justify-center overflow-hidden bg-neutral-950">
-  {/* Background Beams */}
-  <BackgroundBeams />
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-neutral-950">
+        {/* Background Beams */}
+        <BackgroundBeams />
 
-  {/* Content */}
-  <div className="container mx-auto px-4 relative z-20">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2 }}
-      className="text-center"
-    >
-      <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600">
-        DriveOrbit – Smarter Fleet Management for a Safer Future
-      </h1>
-      {/* <p className="text-xl md:text-2xl text-neutral-300 mb-8 max-w-3xl mx-auto relative z-10"> */}
-      <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
-        Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
-      </p>
-      <Link href="https://youtu.be/gnYwnRNFqQ0?si=2u6aF79zeGVv-xwy">
-      <button className="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-neutral-700 py-1 pl-6 pr-14 font-medium text-white">
-  <span className="z-10 pr-2">Request a Demo</span>
-  <div className="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] transition-[width] group-hover:w-[calc(100%-8px)]">
-    <div className="mr-3.5 flex items-center justify-center">
-      <svg
-        width="15"
-        height="15"
-        viewBox="0 0 15 15"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5 text-neutral-50"
-      >
-        <path
-          d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-          fill="currentColor"
-          fillRule="evenodd"
-          clipRule="evenodd"
-        ></path>
-      </svg>
-    </div>
-  </div>
-</button>
-</Link>
-    </motion.div>
-  </div>
-</section>
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600">
+              DriveOrbit – Smarter Fleet Management for a Safer Future
+            </h1>
+            {/* <p className="text-xl md:text-2xl text-neutral-300 mb-8 max-w-3xl mx-auto relative z-10"> */}
+            <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
+              Transform your fleet operations with real-time tracking, smart monitoring, and data-driven insights.
+            </p>
+            <Link href="https://youtu.be/gnYwnRNFqQ0?si=2u6aF79zeGVv-xwy">
+              <button className="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-neutral-700 py-1 pl-6 pr-14 font-medium text-white">
+                <span className="z-10 pr-2">Request a Demo</span>
+                <div className="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] transition-[width] group-hover:w-[calc(100%-8px)]">
+                  <div className="mr-3.5 flex items-center justify-center">
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 15 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 text-neutral-50"
+                    >
+                      <path
+                        d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                        fill="currentColor"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
 
       {/* About Section */}
       <section id="about" className="relative h-screen flex items-center justify-center bg-black">
@@ -420,10 +453,10 @@ export default function Home() {
               </h2>
               <p className="text-lg md:text-xl text-gray-300 mb-8">
                 DriveOrbit is a smart fleet management solution designed to optimize vehicle usage, enhance security, and improve operational efficiency. Our platform empowers businesses with real-time tracking, driver monitoring, and automated insights to reduce misuse and maximize productivity. By leveraging cutting-edge technology, DriveOrbit ensures seamless fleet operations, helping organizations manage their vehicles smarter and safer.
-              </p>
-              <Button
+              </p>              <Button
                 size="lg"
                 className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
+                onClick={() => setShowAppDetails(true)}
               >
                 Learn More <ChevronRight className="ml-2" />
               </Button>
@@ -435,8 +468,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="w-full max-w-sm mx-auto lg:max-w-none"
+              className="w-full max-w-2xl mx-auto lg:max-w-4xl bg-black/30 backdrop-blur-sm rounded-xl p-6 shadow-2xl"
             >
+              <h3 className="text-xl text-center text-white mb-4 font-medium">DriveOrbit App Screenshots</h3>
               <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -453,59 +487,177 @@ export default function Home() {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
               >
+                {/* Original Screenshots */}
                 <SwiperSlide>
-                  <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_195845-removebg-preview.png?raw=true"
-                    alt="App Mockup 1"
-                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/account_page.jpg"
+                      alt="Account Page"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">Account Page</p>
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_195907-removebg-preview.png?raw=true"
-                    alt="App Mockup 2"
-                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/driver_interface.jpg"
+                      alt="Driver Interface"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">Driver Interface</p>
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_195919-removebg-preview.png?raw=true"
-                    alt="App Mockup 3"
-                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/emergency_page.jpg"
+                      alt="Emergency Page"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">Emergency Page</p>
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_195954-removebg-preview.png?raw=true"
-                    alt="App Mockup 4"
-                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/emergeny_buttons.jpg"
+                      alt="Emergency Buttons"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">Emergency Buttons</p>
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_200004-removebg-preview.png?raw=true"
-                    alt="App Mockup 5"
-                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/fuel filling form.jpg"
+                      alt="Fuel Filling Form"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">Fuel Filling Form</p>
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <motion.img
-                    src="https://github.com/DriveOrbit/DOB_LandingPage/blob/master/media/Screenshot_2025-02-23_200025-removebg-preview.png?raw=true"
-                    alt="App Mockup 6"
-                    className="w-60 h-auto object-contain rounded-lg shadow-xl mx-auto"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/job_done.jpg"
+                      alt="Job Done Screen"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">Job Done Screen</p>
+                  </div>
+                </SwiperSlide>
+
+                {/* New Screenshots */}
+
+                <SwiperSlide>
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/Screenshot 2025-05-16 214351.png"
+                      alt="Screenshot 2"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">QR Scan</p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/Screenshot 2025-05-16 214555.png"
+                      alt="Screenshot 3"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">Job start</p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/Screenshot 2025-05-16 214617.png"
+                      alt="Screenshot 4"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">Four side photo capture</p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/Screenshot 2025-05-16 214651.png"
+                      alt="Screenshot 5"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">AI Based damage identifer</p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/Screenshot 2025-05-16 214700.png"
+                      alt="Screenshot 6"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">Screenshot 6</p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/Screenshot 2025-05-16 214744.png"
+                      alt="Screenshot 7"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">Screenshot 7</p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/Screenshot 2025-05-16 214759.png"
+                      alt="Screenshot 8"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <p className="text-white text-sm mt-2">Driving Dashboard</p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.img
+                      src="/media/ss/Screenshot 2025-05-16 214810.png"
+                      alt="Screenshot 9"
+                      className="w-auto h-[450px] object-contain rounded-lg shadow-xl mx-auto"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />{/*  */}
+                    <p className="text-white text-sm mt-2">Map View</p>
+                  </div>
                 </SwiperSlide>
               </Swiper>
               <style jsx global>{`
@@ -514,6 +666,25 @@ export default function Home() {
                 }
                 .swiper-pagination-bullet-active {
                   background-color: #fff !important;
+                }
+                .swiper-slide {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  padding: 30px;
+                }
+                .swiper-button-next, .swiper-button-prev {
+                  color: #fff !important;
+                  background: rgba(0,0,0,0.3);
+                  width: 40px !important;
+                  height: 40px !important;
+                  border-radius: 50%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                }
+                .swiper-button-next:after, .swiper-button-prev:after {
+                  font-size: 18px !important;
                 }
               `}</style>
             </motion.div>
@@ -587,7 +758,7 @@ export default function Home() {
             <TextGenerateEffect words={teamMembersWords} className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600" />
           </div>
           {/* Use the AnimatedTestimonials Component */}
-          <AnimatedTestimonials testimonials={teamMembers} autoplay={true} />       
+          <AnimatedTestimonials testimonials={teamMembers} autoplay={true} />
         </div>
       </section>
 
@@ -600,28 +771,28 @@ export default function Home() {
           <TypewriterEffectSmooth words={words} />
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
             <Link href="/form">
-            <button className="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-neutral-700 py-1 pl-6 pr-14 font-medium text-white">
-  <span className="z-10 pr-2">Get Started Now</span>
-  <div className="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] transition-[width] group-hover:w-[calc(100%-8px)]">
-    <div className="mr-3.5 flex items-center justify-center">
-      <svg
-        width="15"
-        height="15"
-        viewBox="0 0 15 15"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5 text-neutral-50"
-      >
-        <path
-          d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-          fill="currentColor"
-          fillRule="evenodd"
-          clipRule="evenodd"
-        ></path>
-      </svg>
-    </div>
-  </div>
-</button>
+              <button className="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-neutral-700 py-1 pl-6 pr-14 font-medium text-white">
+                <span className="z-10 pr-2">Get Started Now</span>
+                <div className="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-gradient-to-r from-[#6D6BF8] to-[#54C1D5] transition-[width] group-hover:w-[calc(100%-8px)]">
+                  <div className="mr-3.5 flex items-center justify-center">
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 15 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 text-neutral-50"
+                    >
+                      <path
+                        d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                        fill="currentColor"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </button>
             </Link>
           </div>
         </div>
@@ -651,12 +822,12 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Connect</h4>
               <div className="flex space-x-4">
-              
+
                 <a
                   href="https://www.instagram.com/driveorbit.lk/"
                   className="text-gray-600 hover:text-primary transition-colors"
                 >
-                  <Instagram className="h-5 w-5" />
+                  <FaInstagram className="h-5 w-5" />
                 </a>
                 <a
                   href="https://www.linkedin.com/company/driveorbit-lk/"
@@ -668,7 +839,7 @@ export default function Home() {
                   href="https://github.com/DriveOrbit"
                   className="text-gray-600 hover:text-blue-400 transition-colors"
                 >
-                  <Github className="h-5 w-5" />
+                  <FaGithub className="h-5 w-5" />
                 </a>
                 <a
                   href="https://www.tiktok.com/@driveorbit"
@@ -684,33 +855,60 @@ export default function Home() {
               <p className="text-sm text-gray-600 mb-4">
                 Sign up to receive DriveOrbit news and updates
               </p>
-              <form className="flex flex-col space-y-2">
+              <form
+                action="https://formsubmit.co/info@driveorbit.pro"
+                method="POST"
+                className="flex flex-col space-y-2"
+              >
+                {/* FormSubmit Configuration */}
+                <input type="hidden" name="_subject" value="New DriveOrbit Newsletter Subscription" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}/newsletter-thank-you` : ''} />
+
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary mb-2"
+                />
                 <input
                   type="email"
-                  placeholder="Email"
+                  name="email"
+                  placeholder="Your Email"
                   className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
                 />
                 <label className="flex items-center space-x-2">
-                  <input type="checkbox" className="form-checkbox" />
+                  <input type="checkbox" name="subscribe_newsletter" value="yes" className="form-checkbox" />
                   <span className="text-sm text-gray-600">
                     Yes, subscribe me to your newsletter.
                   </span>
                 </label>
-                <button
+                <motion.button
                   type="submit"
                   className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Subscribe
-                </button>
+                </motion.button>
               </form>
             </div>
           </div>
           {/* Bottom Footer */}
           <div className="border-t border-gray-300 pt-8 text-center text-sm text-gray-600">
             <p>&copy; {new Date().getFullYear()} DriveOrbit. All rights reserved.</p>
-          </div>
-        </div>
+          </div>        </div>
       </footer>
+
+      {/* App Details Modal */}
+      {typeof window !== 'undefined' && (
+        <AppDetailsModal
+          isOpen={showAppDetails}
+          onClose={() => setShowAppDetails(false)}
+        />
+      )}
     </div>
   );
 }

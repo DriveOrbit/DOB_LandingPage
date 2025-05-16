@@ -1,0 +1,9 @@
+/* Top navigation styles */
+.navbar-container {
+  transition: all 0.3s ease;
+}
+
+/* Enhanced hover effects for menu items */
+.navbar-container a.group:hover .absolute {
+  width: 100%;
+}

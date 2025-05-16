@@ -1,6 +1,9 @@
 import './globals.css';
+import '../styles/cursor.css';
+import '../styles/loading.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import CustomCursor from '@/components/ui/custom-cursor';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -44,6 +47,7 @@ export default function RootLayout({
           zIndex: -1,
         }}></div>
         {children}
+        <CustomCursor />
       </body>
     </html>
   );
